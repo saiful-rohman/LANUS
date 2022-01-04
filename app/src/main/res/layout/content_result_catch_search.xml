@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/primary_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_input_ln"
+        android:layout_marginLeft="@dimen/margin_left_right_ln_input"
+        android:layout_marginRight="@dimen/margin_left_right_ln_input"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp">
+
+        <ImageView
+            android:layout_width="@dimen/width_height_ic_calendar_result_catch"
+            android:layout_height="@dimen/width_height_ic_calendar_result_catch"
+            android:src="@drawable/calendar"
+            android:scaleType="centerCrop"
+            android:padding="7dp"
+            android:layout_margin="2dp"
+            android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dari Tanggal"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_size_11"/>
+
+            <TextView
+                android:id="@+id/edtDateFrom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2021-12-04"
+                android:textSize="@dimen/font_size_12"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:background="@drawable/border_input_text2"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_ln_input"
+        android:background="@color/white"
+        android:layout_marginLeft="@dimen/margin_left_right_ln_input"
+        android:layout_marginRight="@dimen/margin_left_right_ln_input"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_input_ln"
+        android:layout_marginLeft="@dimen/margin_left_right_ln_input"
+        android:layout_marginRight="@dimen/margin_left_right_ln_input"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp">
+
+        <ImageView
+            android:layout_width="@dimen/width_height_ic_calendar_result_catch"
+            android:layout_height="@dimen/width_height_ic_calendar_result_catch"
+            android:src="@drawable/calendar"
+            android:scaleType="centerCrop"
+            android:padding="7dp"
+            android:layout_margin="2dp"
+            android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sampai Tanggal"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_size_11"/>
+
+            <TextView
+                android:id="@+id/edtDateTo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2021-12-04"
+                android:textSize="@dimen/font_size_12"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:background="@drawable/border_input_text2"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_ln_input"
+        android:background="@color/white"
+        android:layout_marginLeft="@dimen/margin_left_right_ln_input"
+        android:layout_marginRight="@dimen/margin_left_right_ln_input"
+        android:layout_marginBottom="20dp"/>
+
+</LinearLayout>

@@ -1,0 +1,126 @@
+<resources>
+    <string name="app_name">Laut Nusantara</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_help_center">Pusat Bantuan</string>
+    <string name="title_Information">Info</string>
+    <string name="title_Account">Akun</string>
+
+    <string name="text_icon_LN_laut">LN-Laut</string>
+    <string name="text_icon_LN_pesisir">LN-Pesisir</string>
+    <string name="text_icon_LN_khusus">LN-Khusus</string>
+    <string name="text_icon_LN_lemuru">LN-Lemuru</string>
+    <string name="text_icon_LN_bigeye">LN-Bigeye</string>
+    <string name="text_icon_LN_cakalang">LN-Cakalang</string>
+    <string name="text_icon_LN_yellowfin">LN-Yellowfin</string>
+    <string name="text_icon_LN_bluefin">LN-Bluefin</string>
+    <string name="text_icon_LN_albacore">LN-Albacore</string>
+    <string name="text_icon_LN_hargajual">Harga Jual</string>
+    <string name="text_icon_LN_hasiltangkap">Hasil Tangkap</string>
+    <string name="text_icon_LN_hitung_BBM">Hitung BBM</string>
+    <string name="amount_online">Pengguna Online</string>
+
+    <string name="content_text_info">Versi 5.0 \n
+        \n
+    Aplikasi maritim dari PT. XL Axiata Tbk untuk seluruh nelayan di Nusantara \n
+        \n
+    Laut Nusantara adalah sebuah aplikasi berbasis Android yang dibangun oleh PT XL Axiata Tbk (XL Axiata) bagi
+    masyarakat indonesia, terutama para nelayan di seluruh penjuru Nusantara \n
+        \n
+    Tujuan membangung aplikasi didasarkan atas pertimbangan bahwa indonesia merupakan negara kepulauan terbesar 
+    didunia dengan 2/3 wilayahnya merupakan lautan. selain itu, total garis pantai yang dimiliki indonesia mencapai 
+    lebih dari 95.000 km persegi, dan luas hamparan terumbu karang hingga 24,5 juta Ha. selain itu, Indonesia 
+    juga masih menyimpan potensi kelautan lainnya yang juga melimpah, terutama berupa sumberdaya ikan (SDI), mineral 
+    dan bahan tambang, serta potensi transportasi/perhubungan. \n
+        \n
+    melalui aplikasi ini, pengguna aplikasi Laut Nusantara akan mendapatkan informasi mengenai seberan ikan nasional, 
+    sebaran ikan pelabuhan, dan sebaran ikan berdasarkan jenisnya. selain itu, juga tersaji informasi mengenai potensi 
+    dan isu kelautan lainnya seperti terumbu karang, pelestarian biota laut, hingga ancaman perncemaran. Secara keseluruhan 
+    Aplikasi Laut Nusantara mempunyai nilai manfaat yang lebih luas dibanding aplikasi-aplikasi sejenis.\n
+        \n
+    Fitur Aplikasi Laut Nusantara sangat update dan akurat karena data-datanya didapat langsung dari Balai riset 
+    dan Observasi Laut pada Kementrian Kelautan dan Perikanan Republik Indonesia melalui jalur khusus atau tunneling. 
+    Kelahiran aplikasi ini memang tidak terlepas dari dukungan yang diberikan oleh instansi Balai Riset dan Observasi 
+    Laut pada Kementrian Kelautan. Semua informasi kelautan yang terdapat dalam Aplikasi Laut Nusantara ini didapat 
+    secara langsung dari stasiun bumi Balai Riset dan Observasi Laut, sehingga tidak diragukan keakuratannya.</string>
+
+    <string name="title_lable_account">Informasi Detail Akun</string>
+
+    <string name="title_bottomsheet">Informasi Lainnya</string>
+    <string name="bujur">Bujur</string>
+    <string name="lintang">Lintang</string>
+    <string name="disclaimer_bootsheet">Semua data yang ditampilkan adalah data yang berasal dari balai
+    Riset Observasi Laut, BRSDM KP, hal yang berkaitan dengan updating data terbaru tidak berasal
+    dari aplikasiini. Aplikasi tidak bertanggung jawab terhadap akibat dari data yang ditampilkan. Satu
+    titik daerah sebaran ikan memiliki luasan area dengan radius persegi sebesar 4x4 km persegi.</string>
+
+    <string name="disclaimer_bootsheet2">Data yang ditampilkan menunjukkan peluang potensi sebaran ikan
+    pada area tersebut.</string>
+
+    <string name="hint_search">Pencarian Pelabuhan, Pulau dan Kota</string>
+    <string name="text_title_LN_laut">LN-Laut</string>
+    <string name="text_title_LN_pesisir">LN-Pesisir</string>
+    <string name="text_title_LN_khusus">LN-Khusus</string>
+    <string name="text_title_LN_lemuru">LN-Lemuru</string>
+    <string name="text_title_LN_bigeye">LN-Bigeye</string>
+    <string name="text_title_LN_cakalang">LN-Cakalang</string>
+    <string name="text_title_LN_yellowfin">LN-Yellowfin</string>
+    <string name="text_title_LN_bluefin">LN-Bluefin</string>
+    <string name="text_title_LN_albacore">LN-Albacore</string>
+    <string name="text_title_LN_hargajual">Harga Jual</string>
+    <string name="text_title_LN_hasiltangkap">Hasil Tangkap</string>
+    <string name="text_title_LN_hitung_BBM">Hitung BBM</string>
+
+    <string name="button_login">Masuk</string>
+
+    <string name="title_faq">FAQ</string>
+    <string name="title_call_us">Hubungi Kami</string>
+    <string name="title_livechat">Customer Care Chat</string>
+    <string name="title_setting">Pengturan</string>
+    <string name="title_activity_ln_laut_pesisir_khusus_new">LN_Laut_Pesisir_khusus_new</string>
+
+    <string name="high_potential_lable">Potensi Tinggi</string>
+    <string name="mid_potential_lable">Potensi Tinggi</string>
+    <string name="low_potential_lable">Potensi Tinggi</string>
+
+    <string name="link_bpol"><u>http://www.bpol.litbang.kkp.go.id</u></string>
+
+    <string name="title_callus_content">Balai Riset dan Observasi Laut (BROL)</string>
+    <string name="address_callus">Alamat</string>
+    <string name="address_content_callus">Jl. Baru Perancak, Negara, Jembarana, Bali, Indonesia, 82251</string>
+    <string name="phone_callus">Nomor Telepon</string>
+    <string name="phone_content_callus">(0365) 44266, 44268, 44269</string>
+    <string name="fax_callus">Nomor Fax</string>
+    <string name="fax_content_callus">(0365) 44278</string>
+
+    <string name="consume_bbm_setting">Konsumsi BBM</string>
+    <string name="consume_distance_setting">Jarak Tempuh</string>
+    <string name="consume_speed_setting">Kecepatan</string>
+    <string name="consume_brandengine_setting">Merk Mesin</string>
+    <string name="consume_engines_setting">Pilih Mesin</string>
+
+    <string name="default_info_title">default_info_title</string>
+    <string name="default_info_snippet">default_info_snippet</string>
+    <string name="pick_place">pick_place</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="portNames">
+        <item>PP.Brondong</item>
+        <item>PP. Tanjung Pandan</item>
+        <item>PP. Sadai</item>
+        <item>PP. Kwandang</item>
+        <item>PP. Sibolga</item>
+        <item>PP. Tawang</item>
+        <item>PP. Lappa</item>
+        <item>PP. Labuhan Lombok</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="fishNames">
+        <item>Krapu</item>
+        <item>Cumi-Cumi</item>
+        <item>Kakap Merah</item>
+        <item>Kakap Merah</item>
+    </string-array>
+
+</resources>

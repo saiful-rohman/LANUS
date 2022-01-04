@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.home.ui.helpcenter.HelpCenterFragment"
+    android:background="@color/white"
+    android:layout_marginTop="@dimen/margin_top_content_page">
+
+<!--    <include-->
+<!--        android:id="@+id/header_page"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/header_page_height"-->
+<!--        layout="@layout/content_header_help_center"/>-->
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_top_content_subpage"
+        layout="@layout/sub_header_page_bar"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/border_primary_background"
+        android:layout_marginTop="@dimen/margin_top_content_subpage2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/margin_bottom_content_page">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_left_right_car_help_center"
+                android:layout_marginRight="@dimen/margin_left_right_car_help_center"
+                android:layout_marginTop="20dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/shpImgFAQ"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_card_help_center"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/faq"
+                    app:shapeAppearanceOverlay="@style/circleImageViewCardHelpCenter" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_size_23"
+                    android:textStyle="bold"
+                    android:text="FAQ"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_left_carcallcenter"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_left_right_car_help_center"
+                android:layout_marginRight="@dimen/margin_left_right_car_help_center"
+                android:layout_marginTop="20dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/shpImgCallCenter"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_card_help_center"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/callus"
+                    app:shapeAppearanceOverlay="@style/circleImageViewCardHelpCenter" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_left_carcallcenter"
+                    android:text="Hubungi Kami"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_size_23"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_left_right_car_help_center"
+                android:layout_marginRight="@dimen/margin_left_right_car_help_center"
+                android:layout_marginTop="20dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/shpImgLiveChat"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_card_help_center"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/callus"
+                    app:shapeAppearanceOverlay="@style/circleImageViewCardHelpCenter" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_size_23"
+                    android:textStyle="bold"
+                    android:text="Live Chat"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_left_carcallcenter"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_left_right_car_help_center"
+                android:layout_marginRight="@dimen/margin_left_right_car_help_center"
+                android:layout_marginTop="20dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/shpImgSetting"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_card_help_center"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/setting"
+                    app:shapeAppearanceOverlay="@style/circleImageViewCardHelpCenter" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_size_23"
+                    android:textStyle="bold"
+                    android:text="Pengaturan"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_left_carcallcenter"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

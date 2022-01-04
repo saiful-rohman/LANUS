@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/primary_color"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rltvHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txvWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:text="asdasdasdasd"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_size_14" />
+
+            <TextView
+                android:id="@+id/txvUserOnline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_welcome"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:text="aadasdasdasd"
+                android:textColor="@color/primary_color"
+                android:textSize="@dimen/font_size_14" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgCircleSos"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/sos"
+                android:layout_margin="5dp"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgCircleLN"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ln_setting"
+                android:layout_margin="5dp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rltvNonHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_text_title_header_page"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/imgVBack"
+            android:layout_width="@dimen/margin_width_back_image"
+            android:layout_height="@dimen/margin_heigth_back_image"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_left_arrow"
+            android:scaleType="centerCrop"
+            android:layout_marginLeft="@dimen/margin_back_page"
+            android:padding="@dimen/padding_back_image"/>
+
+        <TextView
+            android:id="@+id/txvTitleMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_title_menu_page"
+            android:layout_marginRight="@dimen/margin_title_menu_page"
+            android:gravity="center_horizontal"
+            android:text="@string/title_help_center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_20"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</LinearLayout>

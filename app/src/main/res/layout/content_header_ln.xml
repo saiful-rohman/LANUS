@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/primary_color">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_text_title_header_page"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/imgVBack"
+                android:layout_width="@dimen/margin_width_back_image"
+                android:layout_height="@dimen/margin_heigth_back_image"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_left_arrow"
+                android:scaleType="centerCrop"
+                android:layout_marginLeft="@dimen/margin_back_page"
+                android:padding="@dimen/padding_back_image"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_title_menu_page"
+                android:layout_marginRight="@dimen/margin_title_menu_page"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgLogoLN"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ln_laut"
+                    app:shapeAppearanceOverlay="@style/circleImageViewCardHome" />
+
+                <TextView
+                    android:id="@+id/txvTitleMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_size_20"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border_input_text"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:hint="@string/hint_search"
+            android:drawableEnd="@drawable/ic_target_svgrepo_com"
+            android:drawablePadding="10dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            android:textSize="@dimen/font_size_17"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

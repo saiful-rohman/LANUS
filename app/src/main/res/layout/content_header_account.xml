@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/header_page_height"
+    android:background="@color/primary_color">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_text_title_header_page">
+
+        <ImageView
+            android:id="@+id/imgVBackHelpCenter"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_left_arrow"
+            android:scaleType="centerCrop"
+            android:layout_marginLeft="@dimen/margin_back_page"/>
+
+        <TextView
+            android:id="@+id/txvTitleMenu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_title_menu_page"
+            android:layout_marginRight="@dimen/margin_title_menu_page"
+            android:gravity="center_horizontal"
+            android:text="@string/title_Account"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_23"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</LinearLayout>

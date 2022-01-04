@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=6F:45:0F:D4:93:7B:E4:6E:31:FA:C6:AA:3D:62:AB:E4:14:D2:2C:4C%3Bcom.javaindo.lautnusantara.view.LN_laut_pesisir_khusus
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    com.javaindo.lautnusantara.view.LN_laut_pesisir_khusus
+
+    SHA-1 certificate fingerprint:
+    6F:45:0F:D4:93:7B:E4:6E:31:FA:C6:AA:3D:62:AB:E4:14:D2:2C:4C
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCgcM_7IXacUyQ9E218wP-zmLYp1N_3qTo</string>
+</resources>

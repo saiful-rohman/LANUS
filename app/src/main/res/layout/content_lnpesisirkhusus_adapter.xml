@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/lnrTittleTopList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/txvLongitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="00,00"
+            android:textColor="@color/primary_color"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/txvLatitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="00,00"
+            android:textColor="@color/primary_color"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnrTitleDMS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/lnrTittleTopList"
+        android:background="@color/white"
+        android:weightSum="12"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+        <TextView
+            android:id="@+id/txvLongitudeD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="00,00"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/txvLongitudeM"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="00,00"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/txvLongitudeS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="00,00"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/txvLatitudeD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="00,00"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/txvLatitudeM"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="00,00"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/txvLatitudeS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="00,00"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/lnrTitleDMS"
+        android:orientation="vertical"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:id="@+id/txvDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="00,00"
+            android:textColor="@color/primary_color"
+            android:textSize="@dimen/font_size_10"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

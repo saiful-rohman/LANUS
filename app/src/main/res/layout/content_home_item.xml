@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/lnrLNLaut"
+        android:layout_width="@dimen/icon_image_border_home_menu"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/icon_home_menu_left_align"
+        android:layout_marginTop="@dimen/icon_home_menu_top_align">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgViewLNLaut"
+            android:layout_width="@dimen/icon_image_home_menu"
+            android:layout_height="@dimen/icon_image_home_menu"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ln_laut"
+            android:layout_gravity="center_horizontal"
+            app:shapeAppearanceOverlay="@style/circleImageViewCardHome"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/text_icon_LN_laut"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnrLNCoast"
+        android:layout_width="@dimen/icon_image_border_home_menu"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/icon_home_menu_top_align">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgViewLNCoast"
+            android:layout_width="@dimen/icon_image_home_menu"
+            android:layout_height="@dimen/icon_image_home_menu"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ln_pesisir"
+            android:layout_gravity="center_horizontal"
+            app:shapeAppearanceOverlay="@style/circleImageViewCardHome"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/text_icon_LN_pesisir"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnrLNSpecial"
+        android:layout_width="@dimen/icon_image_border_home_menu"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="@dimen/icon_home_menu_right_align"
+        android:layout_marginTop="@dimen/icon_home_menu_top_align">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgViewLNSpecial"
+            android:layout_width="@dimen/icon_image_home_menu"
+            android:layout_height="@dimen/icon_image_home_menu"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ln_khusus"
+            android:layout_gravity="center_horizontal"
+            app:shapeAppearanceOverlay="@style/circleImageViewCardHome"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/text_icon_LN_khusus"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnrLNLemuru"
+        android:layout_width="@dimen/icon_image_border_home_menu"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/lnrLNLaut"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/icon_home_menu_left_align"
+        android:layout_marginTop="@dimen/icon_home_menu_top_align">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgViewLNLemuru"
+            android:layout_width="@dimen/icon_image_home_menu"
+            android:layout_height="@dimen/icon_image_home_menu"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ln_lemuru"
+            android:layout_gravity="center_horizontal"
+            app:shapeAppearanceOverlay="@style/circleImageViewCardHome"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/text_icon_LN_lemuru"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnrLNBigeye"
+        android:layout_width="@dimen/icon_image_border_home_menu"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/lnrLNCoast"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/icon_home_menu_top_align">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgViewLNBigeye"
+            android:layout_width="@dimen/icon_image_home_menu"
+            android:layout_height="@dimen/icon_image_home_menu"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ln_bigeye"
+            android:layout_gravity="center_horizontal"
+            app:shapeAppearanceOverlay="@style/circleImageViewCardHome"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/text_icon_LN_bigeye"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnrLNCakalang"
+        android:layout_width="@dimen/icon_image_border_home_menu"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/lnrLNSpecial"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="@dimen/icon_home_menu_right_align"
+        android:layout_marginTop="@dimen/icon_home_menu_top_align">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgViewLNCakalang"
+            android:layout_width="@dimen/icon_image_home_menu"
+            android:layout_height="@dimen/icon_image_home_menu"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ln_cakalang"
+            android:layout_gravity="center_horizontal"
+            app:shapeAppearanceOverlay="@style/circleImageViewCardHome"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/text_icon_LN_cakalang"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnrLNYellowfin"
+        android:layout_width="@dimen/icon_image_border_home_menu"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/lnrLNLemuru"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/icon_home_menu_left_align"
+        android:layout_marginTop="@dimen/icon_home_menu_top_align">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgViewLNYellowfin"
+            android:layout_width="@dimen/icon_image_home_menu"
+            android:layout_height="@dimen/icon_image_home_menu"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ln_yellowfin"
+            android:layout_gravity="center_horizontal"
+            app:shapeAppearanceOverlay="@style/circleImageViewCardHome"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/text_icon_LN_yellowfin"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnrLNBLuefin"
+        android:layout_width="@dimen/icon_image_border_home_menu"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/lnrLNBigeye"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/icon_home_menu_top_align">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgViewLNBluefin"
+            android:layout_width="@dimen/icon_image_home_menu"
+            android:layout_height="@dimen/icon_image_home_menu"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ln_bluefin"
+            android:layout_gravity="center_horizontal"
+            app:shapeAppearanceOverlay="@style/circleImageViewCardHome"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/text_icon_LN_bluefin"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnrLNAlbacore"
+        android:layout_width="@dimen/icon_image_border_home_menu"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/lnrLNCakalang"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="@dimen/icon_home_menu_right_align"
+        android:layout_marginTop="@dimen/icon_home_menu_top_align">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgViewLNAlbacore"
+            android:layout_width="@dimen/icon_image_home_menu"
+            android:layout_height="@dimen/icon_image_home_menu"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ln_albacore"
+            android:layout_gravity="center_horizontal"
+            app:shapeAppearanceOverlay="@style/circleImageViewCardHome"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/text_icon_LN_albacore"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnrLNSellprice"
+        android:layout_width="@dimen/icon_image_border_home_menu"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/lnrLNYellowfin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/icon_home_menu_left_align"
+        android:layout_marginTop="@dimen/icon_home_menu_top_align">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgViewLNSellprice"
+            android:layout_width="@dimen/icon_image_home_menu"
+            android:layout_height="@dimen/icon_image_home_menu"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ln_hargajual"
+            android:layout_gravity="center_horizontal"
+            app:shapeAppearanceOverlay="@style/circleImageViewCardHome"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/text_icon_LN_hargajual"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnrLNCatch"
+        android:layout_width="@dimen/icon_image_border_home_menu"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/lnrLNBLuefin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/icon_home_menu_top_align">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgViewLNCatch"
+            android:layout_width="@dimen/icon_image_home_menu"
+            android:layout_height="@dimen/icon_image_home_menu"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ln_hasiltangkap"
+            android:layout_gravity="center_horizontal"
+            app:shapeAppearanceOverlay="@style/circleImageViewCardHome"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/text_icon_LN_hasiltangkap"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnrLNCalculatefuel"
+        android:layout_width="@dimen/icon_image_border_home_menu"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/lnrLNAlbacore"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="@dimen/icon_home_menu_right_align"
+        android:layout_marginTop="@dimen/icon_home_menu_top_align">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgViewLNCalculatefuel"
+            android:layout_width="@dimen/icon_image_home_menu"
+            android:layout_height="@dimen/icon_image_home_menu"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ln_hitungbbm"
+            android:layout_gravity="center_horizontal"
+            app:shapeAppearanceOverlay="@style/circleImageViewCardHome"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/text_icon_LN_hitung_BBM"
+            android:textSize="@dimen/font_size_14"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

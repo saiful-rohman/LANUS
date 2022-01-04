@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.home.ui.account.AccountFragment"
+    android:background="@color/white"
+    android:layout_marginTop="@dimen/margin_top_content_page">
+
+<!--    <include-->
+<!--        android:id="@+id/header_page"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/header_page_height"-->
+<!--        layout="@layout/content_header_account"/>-->
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_top_content_subpage"
+        layout="@layout/sub_header_page_bar"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_primary_background"
+        android:layout_marginBottom="140dp"
+        android:layout_marginTop="@dimen/margin_top_content_subpage2">
+
+        <TextView
+            android:id="@+id/txvTitleAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/white"
+            android:padding="5dp"
+            android:text="@string/title_lable_account"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_16"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/lnrContentAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/txvTitleAccount">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:padding="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/corner_brown"
+                    android:layout_marginTop="17dp">
+
+                    <TextView
+                        android:id="@+id/txvUserName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="@dimen/font_size_18"/>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/white"
+                    android:padding="5dp"
+                    android:text="Nama"
+                    android:textSize="@dimen/font_size_16" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:padding="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/corner_brown"
+                    android:layout_marginTop="17dp">
+
+                    <TextView
+                        android:id="@+id/txvPhoneNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="@dimen/font_size_18"/>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/txvLablePhoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="5dp"
+                    android:text="Nomer Telepon"
+                    android:textSize="@dimen/font_size_16"
+                    android:layout_marginLeft="10dp"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/border_button_logout"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="KELUAR APLIKASI"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textColor="@color/border_button"
+                android:textStyle="bold"
+                android:textSize="@dimen/font_size_16"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

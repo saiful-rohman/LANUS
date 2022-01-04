@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.callus.CallUsActivity">
+
+    <include
+        android:id="@+id/header_page"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_page_height"
+        layout="@layout/content_header_call_us"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/border_primary_background"
+        android:layout_marginTop="@dimen/margin_top_content_page">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/margin_bottom_content_page"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title_callus_content"
+                android:textSize="18dp"
+                android:textColor="@color/title_result_catch_color"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="15dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_sparator"
+                android:background="@color/gray2"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/address_callus"
+                android:textColor="@color/title_result_catch_color"
+                android:textSize="16dp"
+                android:layout_marginTop="@dimen/margin_top_lable_callus"
+                android:layout_marginBottom="@dimen/margin_bottom_lable_callus"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/address_content_callus"
+                android:textSize="16dp"
+                android:layout_marginBottom="@dimen/margin_bottom_lable_callus"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_sparator"
+                android:background="@color/gray2"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/phone_callus"
+                android:textColor="@color/title_result_catch_color"
+                android:textSize="16dp"
+                android:layout_marginTop="@dimen/margin_top_lable_callus"
+                android:layout_marginBottom="@dimen/margin_bottom_lable_callus"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/phone_content_callus"
+                android:textSize="16dp"
+                android:layout_marginBottom="@dimen/margin_bottom_lable_callus"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_sparator"
+                android:background="@color/gray2"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fax_callus"
+                android:textColor="@color/title_result_catch_color"
+                android:textSize="16dp"
+                android:layout_marginTop="@dimen/margin_top_lable_callus"
+                android:layout_marginBottom="@dimen/margin_bottom_lable_callus"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fax_content_callus"
+                android:textSize="16dp"
+                android:layout_marginBottom="@dimen/margin_bottom_lable_callus"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_sparator"
+                android:background="@color/gray2"/>
+
+            <TextView
+                android:id="@+id/txvBpolLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/link_bpol"
+                android:textSize="16dp"
+                android:textColor="@color/yellow"
+                android:textStyle=""
+                android:layout_marginTop="@dimen/margin_top_lable_callus"
+                android:layout_marginBottom="@dimen/margin_bottom_lable_callus"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_sparator"
+                android:background="@color/gray2"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

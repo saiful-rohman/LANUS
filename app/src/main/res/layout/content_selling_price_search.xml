@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/primary_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_input_ln"
+        android:layout_marginLeft="@dimen/margin_left_right_ln_input"
+        android:layout_marginRight="@dimen/margin_left_right_ln_input"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tanggal Aktifitas"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_12"
+            android:layout_marginRight="@dimen/margin_text_search_calendar"
+            android:layout_marginLeft="@dimen/margin_text_search_calendar"/>
+
+<!--        <EditText-->
+<!--            android:id="@+id/edtActivitySearch"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="2021-12-04"-->
+<!--            android:textSize="@dimen/font_size_14"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textColorHint="@color/white"-->
+<!--            android:background="@drawable/border_input_text2"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:layout_marginRight="@dimen/margin_text_search_calendar"-->
+<!--            android:layout_marginLeft="@dimen/margin_text_search_calendar"/>-->
+
+                <Spinner
+                    android:id="@+id/spnrActivitySearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="@dimen/margin_text_search_calendar"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_ln_input"
+        android:background="@color/white"
+        android:layout_marginLeft="@dimen/margin_left_right_ln_input"
+        android:layout_marginRight="@dimen/margin_left_right_ln_input"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_input_ln"
+        android:layout_marginLeft="@dimen/margin_left_right_ln_input"
+        android:layout_marginRight="@dimen/margin_left_right_ln_input"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Pelabuhan"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_12"
+            android:layout_marginRight="@dimen/margin_text_search_calendar"
+            android:layout_marginLeft="@dimen/margin_text_search_calendar"/>
+
+<!--        <EditText-->
+<!--            android:id="@+id/edtPortName"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Masukkan nama pelabuhan"-->
+<!--            android:textSize="@dimen/font_size_14"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textColorHint="@color/white"-->
+<!--            android:background="@drawable/border_input_text2"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:layout_marginRight="@dimen/margin_text_search_calendar"-->
+<!--            android:layout_marginLeft="@dimen/margin_text_search_calendar"/>-->
+        <AutoCompleteTextView
+            android:id="@+id/edtPortName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan nama pelabuhan"
+            android:textSize="@dimen/font_size_14"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:background="@drawable/border_input_text2"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="@dimen/margin_text_search_calendar"
+            android:layout_marginLeft="@dimen/margin_text_search_calendar"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_ln_input"
+        android:background="@color/white"
+        android:layout_marginLeft="@dimen/margin_left_right_ln_input"
+        android:layout_marginRight="@dimen/margin_left_right_ln_input"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_input_ln"
+        android:layout_marginLeft="@dimen/margin_left_right_ln_input"
+        android:layout_marginRight="@dimen/margin_left_right_ln_input"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Ikan"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_12"
+            android:layout_marginRight="@dimen/margin_text_search_calendar"
+            android:layout_marginLeft="@dimen/margin_text_search_calendar"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/edtFishName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan nama ikan"
+            android:textSize="@dimen/font_size_14"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:background="@drawable/border_input_text2"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="@dimen/margin_text_search_calendar"
+            android:layout_marginLeft="@dimen/margin_text_search_calendar"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_ln_input"
+        android:background="@color/white"
+        android:layout_marginLeft="@dimen/margin_left_right_ln_input"
+        android:layout_marginRight="@dimen/margin_left_right_ln_input"
+        android:layout_marginBottom="20dp"/>
+
+</LinearLayout>

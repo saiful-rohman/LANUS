@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/primary_color"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:background="@drawable/border_primary_background_gray">
+
+        <LinearLayout
+            android:id="@+id/lnrEngines"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/border_primary_background">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="@dimen/margin_left_right_calculate"
+                android:layout_marginRight="@dimen/margin_left_right_calculate">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/consume_brandengine_setting"
+                    android:textColor="@color/title_result_catch_color"
+                    android:textSize="16dp"
+                    android:layout_weight="5"
+                    android:layout_gravity="center_vertical"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="5"
+                    android:weightSum="10"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/txvBrandEngine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/primary_color"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="right"
+                        android:layout_weight="2"
+                        android:layout_marginRight="@dimen/margin_right_textselect_setting"/>
+
+                    <ImageView
+                        android:id="@+id/imgBrandEngine"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spin_heigth_setting"
+                        android:src="@drawable/ic_right_arrow"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/spin_paddright_setting"
+                        android:layout_weight="8"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_sparator"
+                android:background="@color/gray2"
+                android:layout_marginTop="@dimen/margin_top_sparator_setting"
+                android:layout_marginBottom="@dimen/margin_bottom_sparator_setting"
+                android:layout_marginLeft="@dimen/margin_left_right_calculate"
+                android:layout_marginRight="@dimen/margin_left_right_calculate"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/margin_left_right_calculate"
+                android:layout_marginRight="@dimen/margin_left_right_calculate">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/consume_engines_setting"
+                    android:textColor="@color/title_result_catch_color"
+                    android:textSize="16dp"
+                    android:layout_weight="5"
+                    android:layout_gravity="center_vertical"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="5"
+                    android:weightSum="10"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/txvEngine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/primary_color"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="right"
+                        android:layout_weight="2"
+                        android:layout_marginRight="@dimen/margin_right_textselect_setting"/>
+
+                    <ImageView
+                        android:id="@+id/imgEngine"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spin_heigth_setting"
+                        android:src="@drawable/ic_right_arrow"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/spin_paddright_setting"
+                        android:layout_weight="8"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_sparator"
+                android:background="@color/gray2"
+                android:layout_marginTop="@dimen/margin_top_sparator_setting"
+                android:layout_marginBottom="@dimen/margin_bottom_sparator_setting"
+                android:layout_marginLeft="@dimen/margin_left_right_calculate"
+                android:layout_marginRight="@dimen/margin_left_right_calculate"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnr2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/margin_separate_color"
+            app:layout_constraintTop_toBottomOf="@+id/lnrEngines"
+            android:background="@color/white">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:padding="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="@dimen/margin_left_right_calculate"
+                android:layout_marginRight="@dimen/margin_left_right_calculate">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="17dp"
+                    android:background="@drawable/corner_brown">
+
+                    <EditText
+                        android:id="@+id/txvUserName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/background_style_edittext"
+                        android:gravity="right"
+                        android:hint="Knot (1.85 Km/jam)"
+                        android:inputType="number"
+                        android:textSize="@dimen/font_size_18" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/white"
+                    android:padding="5dp"
+                    android:text="@string/consume_speed_setting"
+                    android:textSize="@dimen/font_size_16" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:padding="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="@dimen/margin_left_right_calculate"
+                android:layout_marginRight="@dimen/margin_left_right_calculate">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/corner_brown"
+                    android:layout_marginTop="17dp">
+
+                    <EditText
+                        android:id="@+id/txvPhoneNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/font_size_18"
+                        android:hint="KM"
+                        android:gravity="right"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/background_style_edittext"
+                        android:inputType="number"/>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/txvLablePhoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/white"
+                    android:padding="5dp"
+                    android:text="Jarak Tempuh"
+                    android:textSize="@dimen/font_size_16" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnr3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/lnr2"
+            android:layout_marginTop="@dimen/margin_separate_color"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="@dimen/margin_bottom_result_cal"
+                android:layout_marginLeft="@dimen/margin_left_right_calculate"
+                android:layout_marginRight="@dimen/margin_left_right_calculate">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Konsumsi BBM"
+                    android:layout_weight="5"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/calBBMCosume"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                android:layout_marginTop="@dimen/margin_top_result_cal"
+                android:layout_marginBottom="@dimen/margin_bottom_result_cal"
+                android:layout_marginLeft="@dimen/margin_left_right_calculate"
+                android:layout_marginRight="@dimen/margin_left_right_calculate">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rotasi/Menit"
+                    android:layout_weight="5"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/calRotate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="5"
+                    android:gravity="right"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                android:layout_marginTop="@dimen/margin_top_result_cal"
+                android:layout_marginBottom="@dimen/margin_bottom_result_cal"
+                android:layout_marginLeft="@dimen/margin_left_right_calculate"
+                android:layout_marginRight="@dimen/margin_left_right_calculate">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bahan Bakar"
+                    android:layout_weight="5"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/calFuel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                android:layout_marginTop="@dimen/margin_top_result_cal"
+                android:layout_marginBottom="@dimen/margin_bottom_result_cal"
+                android:layout_marginLeft="@dimen/margin_left_right_calculate"
+                android:layout_marginRight="@dimen/margin_left_right_calculate">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kecepatan"
+                    android:layout_weight="5"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/calSpeed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                android:layout_marginTop="@dimen/margin_top_result_cal"
+                android:layout_marginBottom="@dimen/margin_bottom_result_cal"
+                android:layout_marginLeft="@dimen/margin_left_right_calculate"
+                android:layout_marginRight="@dimen/margin_left_right_calculate">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jarak Tempuh"
+                    android:layout_weight="5"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/calMileage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                android:layout_marginTop="@dimen/margin_top_result_cal"
+                android:layout_marginBottom="@dimen/margin_bottom_result_cal"
+                android:layout_marginLeft="@dimen/margin_left_right_calculate"
+                android:layout_marginRight="@dimen/margin_left_right_calculate">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Waktu Tempuh"
+                    android:layout_weight="5"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/calTravelTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                android:layout_marginTop="@dimen/margin_top_result_cal"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="@dimen/margin_left_right_calculate"
+                android:layout_marginRight="@dimen/margin_left_right_calculate">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Konsumsi BBM"
+                    android:layout_weight="5"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/calBBMCosume2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:layout_gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:gravity="right"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/cnstrntCalendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabCalendar"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"/>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/lnrCalendarChooser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@color/yellow"
+                android:orientation="vertical"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    android:id="@+id/txvMonthSelection"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="JAN 01"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_size_20" />
+
+                <TextView
+                    android:id="@+id/txvYearSelection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/font_size_20"
+                    android:textColor="@color/transparent"
+                    android:layout_gravity="center"
+                    android:text="2022"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:layout_constraintTop_toBottomOf="@+id/lnrCalendarChooser"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/lnrMonthCalendar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"/>
+
+                    <LinearLayout
+                        android:id="@+id/lnrYearCalendar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cnstrntCalendar2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:id="@+id/btnOkCalendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OK"
+                android:padding="10dp"
+                android:textColor="@color/yellow"
+                android:textSize="@dimen/font_size_16"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:id="@+id/btnCancleCalendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Batal"
+                android:padding="10dp"
+                android:textColor="@color/yellow"
+                android:textSize="@dimen/font_size_16"
+                app:layout_constraintRight_toLeftOf="@+id/btnOkCalendar"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginRight="10dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

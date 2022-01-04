@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.home.ui.information.InformationFragment"
+    android:background="@color/white"
+    android:layout_marginTop="@dimen/margin_top_content_page">
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_top_content_subpage"
+        layout="@layout/sub_header_page_bar"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/border_primary_background"
+        android:layout_marginTop="@dimen/margin_top_content_subpage2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="@dimen/margin_bottom_content_page">
+
+            <TextView
+                android:id="@+id/txvTitleContentInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_16"
+                android:textColor="@color/black"
+                android:text="Tentang Aplikasi Laut Nusantara"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/txvInfoContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_16"
+                android:layout_marginTop="15dp"
+                android:text="@string/content_text_info"
+                android:textAlignment="textStart"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

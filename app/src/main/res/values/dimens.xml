@@ -1,0 +1,80 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="icon_image_home_menu">70dp</dimen>
+    <dimen name="icon_image_border_home_menu">90dp</dimen>
+    <dimen name="text_home_menu">12dp</dimen>
+    <dimen name="icon_home_menu_left_align">30dp</dimen>
+    <dimen name="icon_home_menu_right_align">30dp</dimen>
+    <dimen name="icon_home_menu_top_align">20dp</dimen>
+    <dimen name="header_page_height">100dp</dimen>
+    <dimen name="carcornerRadius_Cardview">15dp</dimen>
+    <dimen name="margin_top_content_page">80dp</dimen>
+    <dimen name="margin_top_content_subpage">40dp</dimen>
+    <dimen name="margin_top_content_subpage2">10dp</dimen>
+    <dimen name="margin_bottom_content_page">120dp</dimen>
+
+    <dimen name="margin_title_menu_page">20dp</dimen>
+    <dimen name="title_text_size">23dp</dimen>
+    <dimen name="margin_back_page">12dp</dimen>
+    <dimen name="height_card_help_center">90dp</dimen>
+    <dimen name="margin_top_car_help_center">20dp</dimen>
+    <dimen name="margin_left_right_car_help_center">25dp</dimen>
+    <dimen name="margin_top_text_title_header_page">30dp</dimen>
+
+    <dimen name="font_size_10">10dp</dimen>
+    <dimen name="font_size_11">11dp</dimen>
+    <dimen name="font_size_12">12dp</dimen>
+    <dimen name="font_size_14">14dp</dimen>
+    <dimen name="font_size_16">16dp</dimen>
+    <dimen name="font_size_17">17dp</dimen>
+    <dimen name="font_size_18">18dp</dimen>
+    <dimen name="font_size_20">20dp</dimen>
+    <dimen name="font_size_23">23dp</dimen>
+    <dimen name="font_size_24">24dp</dimen>
+    <dimen name="font_size_26">26dp</dimen>
+    <dimen name="font_size_28">28dp</dimen>
+    <dimen name="font_size_32">32dp</dimen>
+
+    <dimen name="margin_left_carcallcenter">25dp</dimen>
+    <dimen name="peekHeighBottomSheet">50dp</dimen>
+
+    <dimen name="height_ln_input">60dp</dimen>
+    <dimen name="margin_left_right_ln_input">30dp</dimen>
+    <dimen name="line_ln_input">5dp</dimen>
+    <dimen name="margin_width_back_image">30dp</dimen>
+    <dimen name="margin_heigth_back_image">30dp</dimen>
+    <dimen name="padding_back_image">6dp</dimen>
+
+    <dimen name="potential_color_param">40dp</dimen>
+    <dimen name="corner_potential_color_param">5dp</dimen>
+    <dimen name="stroke_width_potential_color_param">5dp</dimen>
+
+    <dimen name="margin_top_lable_callus">20dp</dimen>
+    <dimen name="margin_bottom_lable_callus">10dp</dimen>
+    <dimen name="height_sparator">2dp</dimen>
+
+    <dimen name="spin_width_setting">25dp</dimen>
+    <dimen name="spin_heigth_setting">25dp</dimen>
+    <dimen name="spin_width_paddleft_setting">5dp</dimen>
+    <dimen name="spin_heigth_paddright_setting">5dp</dimen>
+    <dimen name="spin_paddright_setting">8dp</dimen>
+    <dimen name="margin_top_sparator_setting">15dp</dimen>
+    <dimen name="margin_bottom_sparator_setting">15dp</dimen>
+    <dimen name="margin_right_textselect_setting">5dp</dimen>
+    <dimen name="margin_lef_right_dialog">30dp</dimen>
+
+    <dimen name="margin_left_right_calculate">25dp</dimen>
+    <dimen name="margin_separate_color">10dp</dimen>
+    <dimen name="margin_top_result_cal">6dp</dimen>
+    <dimen name="margin_bottom_result_cal">6dp</dimen>
+    
+    <dimen name="width_height_ic_calendar_result_catch">45dp</dimen>
+    <dimen name="margin_text_search_calendar">10dp</dimen>
+
+    <dimen name="margin_left_right_calendar">10dp</dimen>
+    <dimen name="margin_top_bottom_calendar">30dp</dimen>
+
+</resources>
