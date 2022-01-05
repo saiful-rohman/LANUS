@@ -1,10 +1,12 @@
 package com.javaindo.lautnusantara.view.result_catch
 
+import android.app.DatePickerDialog
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.activity.viewModels
@@ -35,6 +37,10 @@ import androidx.annotation.Nullable
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import android.content.DialogInterface
+
+
+
 
 
 @AndroidEntryPoint
@@ -61,6 +67,7 @@ class ResultCatchActivity : AppCompatActivity() {
     private var checkExpandeds : ArrayList<TrackClickCursor> = ArrayList<TrackClickCursor>()
     private var searchParm :SearchResultCatchParmModel = SearchResultCatchParmModel()
     private var isFirstSearch = false
+    private var isOkayClicked = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -334,152 +341,215 @@ class ResultCatchActivity : AppCompatActivity() {
 
 
     private fun dialogDateSearch(){
-        var dialog = Dialog(this)
-        var _binding = DialogCalendarBinding.inflate(LayoutInflater.from(this))
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setContentView(_binding.root)
-
-        var dateFrom = ""
-        var dateTo = ""
-
-        var yearChoose = Calendar.getInstance().get(Calendar.YEAR)
-        var txvYears : ArrayList<TextView> = ArrayList<TextView>()
-        var lnrYears : ArrayList<LinearLayout> = ArrayList<LinearLayout>()
-        var datePickers : ArrayList<DatePicker> = ArrayList<DatePicker>()
-        var indxMonth = 0
-
-        for(i in 0..200){
-            var year = 1900 + i
-
-            val txvYear = TextView(dialog.context)
-            txvYears.add(txvYear)
-            txvYears.get(i).setText("${year}")
-            txvYears.get(i).textSize = 24F
-            txvYears.get(i).layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-            val txvParm = txvYears.get(i).layoutParams as LinearLayout.LayoutParams
-            txvParm.setMargins(0,10,0,10)
-            txvParm.gravity = Gravity.CENTER_HORIZONTAL
-
-            if(year ==  yearChoose){
-                txvYears.get(i).requestFocus()
-                txvYears.get(i).setTextColor(ContextCompat.getColor(this,R.color.yellow))
-            }
-
-            txvYears.get(i).setOnClickListener {
-                yearChoose = txvYears.get(i).text.toString().toInt()
-                _binding.txvYearSelection.setText("${yearChoose}")
-            }
-
-            _binding.lnrYearCalendar.addView(txvYears.get(i))
-
-//            //list month
-//            for(k in 1..12){
-//                val datePicker = DatePicker(dialog.context)
-//                datePickers.add(datePicker)
-//                datePickers.get(indxMonth).layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-//                val datePickerParm = datePickers.get(indxMonth).layoutParams as LinearLayout.LayoutParams
-//                datePickerParm.setMargins(0,10,0,10)
-////                datePickerParm.gravity = Gravity.CENTER_HORIZONTAL
+        val calendar = Calendar.getInstance()
+        var yearNow = calendar.get(Calendar.YEAR)
+        var monthNow = calendar.get(Calendar.MONTH)
+        var dateNow = calendar.get(Calendar.DAY_OF_MONTH)
 //
-//                _binding.lnrMonthCalendar.addView(datePickers.get(indxMonth))
-//                indxMonth++
-//            }
-        }
-
-        _binding.tabCalendar.addTab(_binding.tabCalendar.newTab().setText("From"))
-        _binding.tabCalendar.addTab(_binding.tabCalendar.newTab().setText("To"))
-        _binding.tabCalendar.tabGravity = TabLayout.GRAVITY_FILL
-        _binding.tabCalendar.addOnTabSelectedListener(object : OnTabSelectedListener{
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                Toast.makeText(applicationContext,"${tab?.position}",Toast.LENGTH_LONG).show()
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {}
-            override fun onTabReselected(tab: TabLayout.Tab?) {}
-
-        })
-
-        _binding.txvMonthSelection.setOnClickListener {
-            _binding.txvMonthSelection.textSize = 28f
-            _binding.txvYearSelection.textSize = 18f
-            _binding.txvMonthSelection.setTextColor(ContextCompat.getColor(applicationContext,R.color.white))
-            _binding.txvYearSelection.setTextColor(ContextCompat.getColor(applicationContext,R.color.transparent))
-            _binding.lnrMonthCalendar.visibility = View.VISIBLE
-            _binding.lnrYearCalendar.visibility = View.GONE
-
-//            _binding.lnrMonthCalendar.removeAllViews()
-//            if(datePickers != null){
-//                datePickers = ArrayList<DatePicker>()
-//            }
-//
-//            for(i in 0..200){
-//                var year = 1900 + i
-//
-//                val datePicker = DatePicker(dialog.context)
-//                datePickers.add(datePicker)
-//                datePickers.get(i).layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-//                val datePickerParm = datePickers.get(i).layoutParams as LinearLayout.LayoutParams
-//                datePickerParm.setMargins(0,10,0,10)
-////                datePickerParm.gravity = Gravity.CENTER_HORIZONTAL
-//
-//                _binding.lnrMonthCalendar.addView(datePickers.get(i))
-//            }
-
-        }
-
-        _binding.txvYearSelection.setOnClickListener {
-            _binding.txvMonthSelection.textSize = 18f
-            _binding.txvYearSelection.textSize = 28f
-            _binding.txvMonthSelection.setTextColor(ContextCompat.getColor(applicationContext,R.color.transparent))
-            _binding.txvYearSelection.setTextColor(ContextCompat.getColor(applicationContext,R.color.white))
-            _binding.lnrMonthCalendar.visibility = View.GONE
-            _binding.lnrYearCalendar.visibility = View.VISIBLE
-
-//            _binding.lnrYearCalendar.removeAllViews()
-//            if(txvYears != null){
-//                txvYears = ArrayList<TextView>()
-//            }
-//            if(lnrYears != null){
-//                lnrYears = ArrayList<LinearLayout>()
-//            }
-//
-//            for(i in 0..200){
-//                var year = 1900 + i
-//
-//                val txvYear = TextView(dialog.context)
-//                txvYears.add(txvYear)
-//                txvYears.get(i).setText("${year}")
-//                txvYears.get(i).textSize = 24F
-//                txvYears.get(i).layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-//                val txvParm = txvYears.get(i).layoutParams as LinearLayout.LayoutParams
-//                txvParm.setMargins(0,10,0,10)
-//                txvParm.gravity = Gravity.CENTER_HORIZONTAL
-//
-//                if(year ==  yearChoose){
-//                    txvYears.get(i).requestFocus()
-//                    txvYears.get(i).setTextColor(ContextCompat.getColor(this,R.color.yellow))
+//        val id : Locale = Locale ("in","ID")
+//        val sdf : SimpleDateFormat = SimpleDateFormat("yyyy-mm-dd",id)
+//        val datePickerDialog = DatePickerDialog(
+//            this,
+//            object : DatePickerDialog.OnDateSetListener {
+//                override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
+//                    Log.d("asdas","asdasd")
 //                }
-//
-//                txvYears.get(i).setOnClickListener {
-//                    yearChoose = txvYears.get(i).text.toString().toInt()
-//                    _binding.txvYearSelection.setText("${yearChoose}")
-//                }
-//
-//                _binding.lnrYearCalendar.addView(txvYears.get(i))
-//            }
+//            },
+//            yearNow,
+//            monthNow,
+//            dateNow
+//        )
+////        datePickerDialog.setTitle("select date")
+//        datePickerDialog.show()
 
+
+        val datePickerListener = DatePickerDialog.OnDateSetListener {
+                view, selectedYear, selectedMonth, selectedDay ->
+
+                // when dialog box is closed, below method will be called.
+                if (isOkayClicked) {
+//                    birthday.setText(
+//                        selectedYear + (selectedMonth + 1)
+//                                + selectedDay
+//                    )
+                    Toast.makeText(this,"aaaaaaaaaaaaa",Toast.LENGTH_LONG).show()
+                    yearNow = selectedYear
+                    monthNow = selectedMonth
+                    dateNow = selectedDay
+                }
+                isOkayClicked = false
+            }
+
+        val datePickerDialog = DatePickerDialog(
+            this, datePickerListener,
+            yearNow, monthNow, dateNow
+        )
+
+        datePickerDialog.setButton(
+            DialogInterface.BUTTON_NEGATIVE,
+            "cancel"
+        ) { dialog, which ->
+            if (which == DialogInterface.BUTTON_NEGATIVE) {
+                dialog.cancel()
+                isOkayClicked = false
+            }
         }
 
-        _binding.btnOkCalendar.setOnClickListener {
-            viewModel.getResultCacth(ResultStateValue.getResultCatch,searchParm)
+        datePickerDialog.setButton(
+            DialogInterface.BUTTON_POSITIVE,
+            "OK"
+        ) { dialog, which ->
+            if (which == DialogInterface.BUTTON_POSITIVE) {
+                isOkayClicked = true
+                val datePicker = datePickerDialog
+                    .datePicker
+                datePickerListener.onDateSet(
+                    datePicker,
+                    datePicker.year,
+                    datePicker.month,
+                    datePicker.dayOfMonth
+                )
+            }
         }
+        datePickerDialog.setCancelable(false)
+        datePickerDialog.show()
 
-        _binding.btnCancleCalendar.setOnClickListener {
-            dialog.dismiss()
-        }
-
-        dialog.show()
     }
+
+//    private fun dialogDateSearch(){
+//        var dialog = Dialog(this)
+//        var _binding = DialogCalendarBinding.inflate(LayoutInflater.from(this))
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+//        dialog.setContentView(_binding.root)
+//
+//        var yearChoose = Calendar.getInstance().get(Calendar.YEAR)
+//        var txvYears : ArrayList<TextView> = ArrayList<TextView>()
+//
+//        for(i in 0..200){
+//            var year = 1900 + i
+//
+//            val txvYear = TextView(dialog.context)
+//            txvYears.add(txvYear)
+//            txvYears.get(i).setText("${year}")
+//            txvYears.get(i).textSize = 24F
+//            txvYears.get(i).layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+//            val txvParm = txvYears.get(i).layoutParams as LinearLayout.LayoutParams
+//            txvParm.setMargins(0,10,0,10)
+//            txvParm.gravity = Gravity.CENTER_HORIZONTAL
+//
+//            if(year ==  yearChoose){
+//                txvYears.get(i).requestFocus()
+//                txvYears.get(i).setTextColor(ContextCompat.getColor(this,R.color.yellow))
+//            }
+//
+//            txvYears.get(i).setOnClickListener {
+//                yearChoose = txvYears.get(i).text.toString().toInt()
+//                _binding.txvYearSelection.setText("${yearChoose}")
+//            }
+//
+//            _binding.lnrYearCalendar.addView(txvYears.get(i))
+//        }
+//
+//        _binding.tabCalendar.addTab(_binding.tabCalendar.newTab().setText("From"))
+//        _binding.tabCalendar.addTab(_binding.tabCalendar.newTab().setText("To"))
+//        _binding.tabCalendar.tabGravity = TabLayout.GRAVITY_FILL
+//        _binding.tabCalendar.addOnTabSelectedListener(object : OnTabSelectedListener{
+//            override fun onTabSelected(tab: TabLayout.Tab?) {
+//                Toast.makeText(applicationContext,"${tab?.position}",Toast.LENGTH_LONG).show()
+//            }
+//
+//            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+//            override fun onTabReselected(tab: TabLayout.Tab?) {}
+//
+//        })
+//
+//        _binding.txvMonthSelection.setOnClickListener {
+//            _binding.txvMonthSelection.textSize = 28f
+//            _binding.txvYearSelection.textSize = 18f
+//            _binding.txvMonthSelection.setTextColor(ContextCompat.getColor(applicationContext,R.color.white))
+//            _binding.txvYearSelection.setTextColor(ContextCompat.getColor(applicationContext,R.color.transparent))
+//            _binding.lnrMonthCalendar.visibility = View.VISIBLE
+//            _binding.lnrYearCalendar.visibility = View.GONE
+//
+////            _binding.lnrMonthCalendar.removeAllViews()
+////            if(datePickers != null){
+////                datePickers = ArrayList<DatePicker>()
+////            }
+////
+////            for(i in 0..200){
+////                var year = 1900 + i
+////
+////                val datePicker = DatePicker(dialog.context)
+////                datePickers.add(datePicker)
+////                datePickers.get(i).layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+////                val datePickerParm = datePickers.get(i).layoutParams as LinearLayout.LayoutParams
+////                datePickerParm.setMargins(0,10,0,10)
+//////                datePickerParm.gravity = Gravity.CENTER_HORIZONTAL
+////
+////                _binding.lnrMonthCalendar.addView(datePickers.get(i))
+////            }
+//
+//        }
+//
+//        _binding.txvYearSelection.setOnClickListener {
+//            _binding.txvMonthSelection.textSize = 18f
+//            _binding.txvYearSelection.textSize = 28f
+//            _binding.txvMonthSelection.setTextColor(ContextCompat.getColor(applicationContext,R.color.transparent))
+//            _binding.txvYearSelection.setTextColor(ContextCompat.getColor(applicationContext,R.color.white))
+//            _binding.lnrMonthCalendar.visibility = View.GONE
+//            _binding.lnrYearCalendar.visibility = View.VISIBLE
+//
+////            _binding.lnrYearCalendar.removeAllViews()
+////            if(txvYears != null){
+////                txvYears = ArrayList<TextView>()
+////            }
+////            if(lnrYears != null){
+////                lnrYears = ArrayList<LinearLayout>()
+////            }
+////
+////            for(i in 0..200){
+////                var year = 1900 + i
+////
+////                val txvYear = TextView(dialog.context)
+////                txvYears.add(txvYear)
+////                txvYears.get(i).setText("${year}")
+////                txvYears.get(i).textSize = 24F
+////                txvYears.get(i).layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+////                val txvParm = txvYears.get(i).layoutParams as LinearLayout.LayoutParams
+////                txvParm.setMargins(0,10,0,10)
+////                txvParm.gravity = Gravity.CENTER_HORIZONTAL
+////
+////                if(year ==  yearChoose){
+////                    txvYears.get(i).requestFocus()
+////                    txvYears.get(i).setTextColor(ContextCompat.getColor(this,R.color.yellow))
+////                }
+////
+////                txvYears.get(i).setOnClickListener {
+////                    yearChoose = txvYears.get(i).text.toString().toInt()
+////                    _binding.txvYearSelection.setText("${yearChoose}")
+////                }
+////
+////                _binding.lnrYearCalendar.addView(txvYears.get(i))
+////            }
+//
+//        }
+//
+//        _binding.btnOkCalendar.setOnClickListener {
+//            val day = if(_binding.dpCalendar.dayOfMonth > 9) "0${_binding.dpCalendar.dayOfMonth}" else "${_binding.dpCalendar.dayOfMonth}"
+//            val month = if(_binding.dpCalendar.month > 9) "0${_binding.dpCalendar.month}" else "${_binding.dpCalendar.month}"
+//            val year = if(_binding.dpCalendar.year > 9) "0${_binding.dpCalendar.year}" else "${_binding.dpCalendar.year}"
+//            searchParm.dateFrom = "${year}-${month}-${day}"
+//            Toast.makeText(this,"${searchParm.dateFrom}",Toast.LENGTH_LONG).show()
+//
+////            viewModel.getResultCacth(ResultStateValue.getResultCatch,searchParm)
+//        }
+//
+//        _binding.btnCancleCalendar.setOnClickListener {
+//            dialog.dismiss()
+//        }
+//
+//        dialog.show()
+//    }
 
 
 }

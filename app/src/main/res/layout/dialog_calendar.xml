@@ -59,7 +59,7 @@
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/lnrCalendarChooser"
                 app:layout_constraintBottom_toBottomOf="parent">
 
@@ -69,13 +69,22 @@
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:id="@+id/lnrMonthCalendar"
+                        android:id="@+id/lnrDateFrom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"/>
+                        android:orientation="vertical">
+
+<!--                        <DatePicker-->
+<!--                            android:id="@+id/dpCalendar"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:datePickerMode="spinner"-->
+<!--                            android:spinnersShown="false"/>-->
+
+                    </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/lnrYearCalendar"
+                        android:id="@+id/lnrDateTor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
