@@ -1,4 +1,4 @@
-package com.javaindo.lautnusantara.di
+package com.javaindo.lautnusantara.hi
 
 import com.javaindo.lautnusantara.repository.*
 import com.javaindo.lautnusantara.retrofit.API

@@ -170,7 +170,7 @@ class FAQActivity : AppCompatActivity() {
         rc2.question = "Apakah Tujuan Aplikasi Laut Nusantara ini dibuat?"
         rc2.answer = "Tujuan membangun aplikasi Laut Nusantara ini didasarkan atas pertimbangan " +
                 "bahwa indonesia merupakan negara kepualauan terbesar didunia dengan 2/3 wilayahnya " +
-                "merupakan lautan. Selain itu, total garis pantai yang di miliki indonesia mencapai " +
+                "merupakan lautan. Selain itu, total garis pantai yang hi miliki indonesia mencapai " +
                 "lebih dari 95.000 km persegi, dan luas hamparan terumbu karang hingga 24,5 juta Ha. " +
                 "selain itu, Indonesia juga masih menyimpan potensi kelautan lainnya yang juga melimpah " +
                 ", terutama berupa sumberdaya ikan (SDI), mineral dan bahan tambang, serta potensi " +
@@ -202,7 +202,7 @@ class FAQActivity : AppCompatActivity() {
 
         val rc5 = FAQModel()
         rc5.question = "Informasi apa saja yang tersedia diaplikasi Laut Nusantara?"
-        rc5.answer = "Informasi yang tersedia di aplikasi Laut Nusantara antara lain daerah penangkapan " +
+        rc5.answer = "Informasi yang tersedia hi aplikasi Laut Nusantara antara lain daerah penangkapan " +
                 "ikan , data cuaca(arah angin, kecepatan angin, cuaca, tinggi gelombang pada koordinat " +
                 "tertentu, status laut (aman, waspada dan bahaya) untuk melaut, lapor tangkapan, gelombang " +
                 "perairan, harga ikan pelabuhan, nama ikan dan 3 penamaan (Daerah Inggris dan Latin), informasi " +

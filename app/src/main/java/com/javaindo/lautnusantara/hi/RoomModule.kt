@@ -1,4 +1,4 @@
-package com.javaindo.lautnusantara.di
+package com.javaindo.lautnusantara.hi
 
 import android.content.Context
 import androidx.room.Room

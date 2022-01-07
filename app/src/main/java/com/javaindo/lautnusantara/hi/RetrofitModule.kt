@@ -1,4 +1,4 @@
-package com.javaindo.lautnusantara.di
+package com.javaindo.lautnusantara.hi
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
