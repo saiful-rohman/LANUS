@@ -104,6 +104,8 @@
     <string name="pick_place">pick_place</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ok_dialog_calender">OK</string>
+    <string name="cancle_dialog_calender">OK</string>
 
     <string-array name="portNames">
         <item>PP.Brondong</item>

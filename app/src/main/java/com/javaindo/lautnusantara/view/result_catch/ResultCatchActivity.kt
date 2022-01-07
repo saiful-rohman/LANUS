@@ -38,9 +38,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 import android.content.DialogInterface
-
-
-
+import java.lang.Exception
 
 
 @AndroidEntryPoint
@@ -99,21 +97,31 @@ class ResultCatchActivity : AppCompatActivity() {
     }
 
     private fun processData(){
+        searchParm.dateFrom = binding.inlcdResultCatchSearch.edtDateFrom.text.toString()
+        searchParm.dateTo = binding.inlcdResultCatchSearch.edtDateTo.text.toString()
         viewModel.getResultCacth(ResultStateValue.getResultCatch,searchParm)
     }
 
     private fun setPartInit(){
+        val calendar = Calendar.getInstance()
+        var year = calendar.get(Calendar.YEAR)
+        var month = if((calendar.get(Calendar.MONTH)+1) <= 9) "0${(calendar.get(Calendar.MONTH)+1)}" else "${(calendar.get(Calendar.MONTH)+1)}"
+        var day = if(calendar.get(Calendar.DAY_OF_MONTH) <= 9) "0${calendar.get(Calendar.DAY_OF_MONTH)}" else "${calendar.get(Calendar.DAY_OF_MONTH)}"
+        val dateNow = "${year}-${month}-${day}"
+        binding.inlcdResultCatchSearch.edtDateFrom.text = dateNow
+        binding.inlcdResultCatchSearch.edtDateTo.text = dateNow
+
         binding.headerPage.imgLogoLN.setImageResource(R.drawable.ln_hasiltangkap)
         binding.headerPage.txvTitleMenu.text = getString(R.string.text_title_LN_hasiltangkap)
     }
 
     private fun onClick(){
-        binding.inlcdResultCatchSearch.edtDateTo.setOnClickListener {
-            dialogDateSearch()
+        binding.inlcdResultCatchSearch.edtDateFrom.setOnClickListener {
+            dialogDateSearch(0)
         }
 
-        binding.inlcdResultCatchSearch.edtDateFrom.setOnClickListener {
-            dialogDateSearch()
+        binding.inlcdResultCatchSearch.edtDateTo.setOnClickListener {
+            dialogDateSearch(1)
         }
 
         binding.headerPage.imgVBack.setOnClickListener {
@@ -336,85 +344,321 @@ class ResultCatchActivity : AppCompatActivity() {
         if(checkExpandeds != null){
             checkExpandeds = ArrayList<TrackClickCursor>()
         }
-
+        binding.contentResultCatch.removeAllViews()
     }
 
+    private fun dialogDateSearch(indx : Int){
+        var dialog = Dialog(this)
+        var _binding = DialogCalendarBinding.inflate(LayoutInflater.from(this))
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(_binding.root)
 
-    private fun dialogDateSearch(){
-        val calendar = Calendar.getInstance()
-        var yearNow = calendar.get(Calendar.YEAR)
-        var monthNow = calendar.get(Calendar.MONTH)
-        var dateNow = calendar.get(Calendar.DAY_OF_MONTH)
-//
-//        val id : Locale = Locale ("in","ID")
-//        val sdf : SimpleDateFormat = SimpleDateFormat("yyyy-mm-dd",id)
-//        val datePickerDialog = DatePickerDialog(
-//            this,
-//            object : DatePickerDialog.OnDateSetListener {
-//                override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
-//                    Log.d("asdas","asdasd")
-//                }
-//            },
-//            yearNow,
-//            monthNow,
-//            dateNow
-//        )
-////        datePickerDialog.setTitle("select date")
-//        datePickerDialog.show()
-
-
-        val datePickerListener = DatePickerDialog.OnDateSetListener {
-                view, selectedYear, selectedMonth, selectedDay ->
-
-                // when dialog box is closed, below method will be called.
-                if (isOkayClicked) {
-//                    birthday.setText(
-//                        selectedYear + (selectedMonth + 1)
-//                                + selectedDay
-//                    )
-                    Toast.makeText(this,"aaaaaaaaaaaaa",Toast.LENGTH_LONG).show()
-                    yearNow = selectedYear
-                    monthNow = selectedMonth
-                    dateNow = selectedDay
+        _binding.tabCalendar.addTab(_binding.tabCalendar.newTab().setText("From"))
+        _binding.tabCalendar.addTab(_binding.tabCalendar.newTab().setText("To"))
+        _binding.tabCalendar.tabGravity = TabLayout.GRAVITY_FILL
+        _binding.tabCalendar.addOnTabSelectedListener(object : OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                val tabPos : Int = tab!!.position
+                if(tabPos == 0){
+                    _binding.lnrDateFrom.visibility = View.VISIBLE
+                    _binding.lnrDateTo.visibility = View.GONE
+                } else {
+                    _binding.lnrDateFrom.visibility = View.GONE
+                    _binding.lnrDateTo.visibility = View.VISIBLE
                 }
-                isOkayClicked = false
             }
 
-        val datePickerDialog = DatePickerDialog(
-            this, datePickerListener,
-            yearNow, monthNow, dateNow
-        )
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
 
-        datePickerDialog.setButton(
-            DialogInterface.BUTTON_NEGATIVE,
-            "cancel"
-        ) { dialog, which ->
-            if (which == DialogInterface.BUTTON_NEGATIVE) {
-                dialog.cancel()
-                isOkayClicked = false
-            }
+        })
+
+        if(indx > 0){
+            _binding.tabCalendar.getTabAt(1)!!.select()
         }
 
-        datePickerDialog.setButton(
-            DialogInterface.BUTTON_POSITIVE,
-            "OK"
-        ) { dialog, which ->
-            if (which == DialogInterface.BUTTON_POSITIVE) {
-                isOkayClicked = true
-                val datePicker = datePickerDialog
-                    .datePicker
-                datePickerListener.onDateSet(
-                    datePicker,
-                    datePicker.year,
-                    datePicker.month,
-                    datePicker.dayOfMonth
-                )
+        _binding.btnOkCalendar.setOnClickListener {
+            try{
+                var year = _binding.dpCalendarFrom.year
+                var month = if((_binding.dpCalendarFrom.month+1) <= 9) "0${(_binding.dpCalendarFrom.month+1)}" else "${(_binding.dpCalendarFrom.month+1)}"
+                var day = if(_binding.dpCalendarFrom.dayOfMonth <= 9) "0${_binding.dpCalendarFrom.dayOfMonth}" else "${_binding.dpCalendarFrom.dayOfMonth}"
+                searchParm.dateFrom = "${year}-${month}-${day}"
+                binding.inlcdResultCatchSearch.edtDateFrom.text = searchParm.dateFrom
+
+                var yearTo = _binding.dpCalendarTo.year
+                var monthTo = if((_binding.dpCalendarTo.month+1) <= 9) "0${(_binding.dpCalendarTo.month+1)}" else "${(_binding.dpCalendarTo.month+1)}"
+                var dayTo = if( _binding.dpCalendarTo.dayOfMonth <= 9) "0${_binding.dpCalendarTo.dayOfMonth}" else "${_binding.dpCalendarTo.dayOfMonth}"
+                searchParm.dateTo = "${yearTo}-${monthTo}-${dayTo}"
+                binding.inlcdResultCatchSearch.edtDateTo.text = searchParm.dateTo
+
+                viewModel.getResultCacth(ResultStateValue.getResultCatch,searchParm)
+            }catch ( e : Exception){
+                Toast.makeText(this,"${e.message}",Toast.LENGTH_LONG).show()
             }
+            dialog.dismiss()
         }
-        datePickerDialog.setCancelable(false)
-        datePickerDialog.show()
+
+        _binding.btnCancleCalendar.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
 
     }
+
+
+//    private fun dialogDateSearch(){
+//        val calendar = Calendar.getInstance()
+//        var yearNow = calendar.get(Calendar.YEAR)
+//        var monthNow = calendar.get(Calendar.MONTH)
+//        var dateNow = calendar.get(Calendar.DAY_OF_MONTH)
+//
+//        val id = Locale ("in","ID")
+//        val sdf = SimpleDateFormat("yyyy-mm-dd",id)
+//
+////        val datePickerListener = DatePickerDialog.OnDateSetListener {
+////                view, selectedYear, selectedMonth, selectedDay ->
+////
+////                // when dialog box is closed, below method will be called.
+////                if (isOkayClicked) {
+////                    calendar.set(selectedYear,selectedMonth,selectedDay)
+////                    binding.inlcdResultCatchSearch.edtDateFrom.setText(
+////                        sdf.format(calendar.time)
+////                    )
+//////                    Toast.makeText(this,"aaaaaaaaaaaaa",Toast.LENGTH_LONG).show()
+////                    yearNow = selectedYear
+////                    monthNow = selectedMonth
+////                    dateNow = selectedDay
+////                }
+////                isOkayClicked = false
+////            }
+////
+////        val datePickerDialog = DatePickerDialog(
+////            this, datePickerListener,
+////            yearNow, monthNow, dateNow
+////        )
+////
+////        datePickerDialog.setButton(
+////            DialogInterface.BUTTON_NEGATIVE,
+////            getString(R.string.cancle_dialog_calender)
+////        ) { dialog, which ->
+////            if (which == DialogInterface.BUTTON_NEGATIVE) {
+////                dialog.cancel()
+////                isOkayClicked = false
+////            }
+////        }
+////
+////        datePickerDialog.setButton(
+////            DialogInterface.BUTTON_POSITIVE,
+////            getString(R.string.ok_dialog_calender)
+////        ) { dialog, which ->
+////            if (which == DialogInterface.BUTTON_POSITIVE) {
+////                isOkayClicked = true
+////                val datePicker = datePickerDialog
+////                    .datePicker
+////                datePickerListener.onDateSet(
+////                    datePicker,
+////                    datePicker.year,
+////                    datePicker.month,
+////                    datePicker.dayOfMonth
+////                )
+////            }
+////        }
+////        datePickerDialog.setCancelable(false)
+////        datePickerDialog.show()
+//
+//
+//        var dialog = Dialog(this)
+//        var _binding = DialogCalendarBinding.inflate(LayoutInflater.from(this))
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+//        dialog.setContentView(_binding.root)
+//
+//        _binding.tabCalendar.addTab(_binding.tabCalendar.newTab().setText("From"))
+//        _binding.tabCalendar.addTab(_binding.tabCalendar.newTab().setText("To"))
+//        _binding.tabCalendar.tabGravity = TabLayout.GRAVITY_FILL
+//        _binding.tabCalendar.addOnTabSelectedListener(object : OnTabSelectedListener{
+//            override fun onTabSelected(tab: TabLayout.Tab?) {
+////                Toast.makeText(applicationContext,"${tab?.position}",Toast.LENGTH_LONG).show()
+//                val tabPos : Int = tab!!.position
+//                if(tabPos == 0){
+//                    _binding.lnrDateFrom.visibility = View.VISIBLE
+//                    _binding.lnrDateTo.visibility = View.GONE
+//                } else {
+//                    _binding.lnrDateFrom.visibility = View.GONE
+//                    _binding.lnrDateTo.visibility = View.VISIBLE
+//                }
+//            }
+//
+//            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+//            override fun onTabReselected(tab: TabLayout.Tab?) {}
+//
+//        })
+//
+////        _binding.txvMonthSelection.setOnClickListener {
+//////            _binding.txvMonthSelection.textSize = 28f
+//////            _binding.txvYearSelection.textSize = 18f
+//////            _binding.txvMonthSelection.setTextColor(ContextCompat.getColor(applicationContext,R.color.white))
+//////            _binding.txvYearSelection.setTextColor(ContextCompat.getColor(applicationContext,R.color.transparent))
+////
+//////            _binding.lnrMonthCalendar.removeAllViews()
+//////            if(datePickers != null){
+//////                datePickers = ArrayList<DatePicker>()
+//////            }
+//////
+//////            for(i in 0..200){
+//////                var year = 1900 + i
+//////
+//////                val datePicker = DatePicker(dialog.context)
+//////                datePickers.add(datePicker)
+//////                datePickers.get(i).layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+//////                val datePickerParm = datePickers.get(i).layoutParams as LinearLayout.LayoutParams
+//////                datePickerParm.setMargins(0,10,0,10)
+////////                datePickerParm.gravity = Gravity.CENTER_HORIZONTAL
+//////
+//////                _binding.lnrMonthCalendar.addView(datePickers.get(i))
+//////            }
+////
+////        }
+//
+////        _binding.txvYearSelection.setOnClickListener {
+//////            _binding.txvMonthSelection.textSize = 18f
+//////            _binding.txvYearSelection.textSize = 28f
+//////            _binding.txvMonthSelection.setTextColor(ContextCompat.getColor(applicationContext,R.color.transparent))
+//////            _binding.txvYearSelection.setTextColor(ContextCompat.getColor(applicationContext,R.color.white))
+////
+//////            _binding.lnrYearCalendar.removeAllViews()
+//////            if(txvYears != null){
+//////                txvYears = ArrayList<TextView>()
+//////            }
+//////            if(lnrYears != null){
+//////                lnrYears = ArrayList<LinearLayout>()
+//////            }
+//////
+//////            for(i in 0..200){
+//////                var year = 1900 + i
+//////
+//////                val txvYear = TextView(dialog.context)
+//////                txvYears.add(txvYear)
+//////                txvYears.get(i).setText("${year}")
+//////                txvYears.get(i).textSize = 24F
+//////                txvYears.get(i).layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+//////                val txvParm = txvYears.get(i).layoutParams as LinearLayout.LayoutParams
+//////                txvParm.setMargins(0,10,0,10)
+//////                txvParm.gravity = Gravity.CENTER_HORIZONTAL
+//////
+//////                if(year ==  yearChoose){
+//////                    txvYears.get(i).requestFocus()
+//////                    txvYears.get(i).setTextColor(ContextCompat.getColor(this,R.color.yellow))
+//////                }
+//////
+//////                txvYears.get(i).setOnClickListener {
+//////                    yearChoose = txvYears.get(i).text.toString().toInt()
+//////                    _binding.txvYearSelection.setText("${yearChoose}")
+//////                }
+//////
+//////                _binding.lnrYearCalendar.addView(txvYears.get(i))
+//////            }
+////
+////        }
+//
+//        _binding.btnOkCalendar.setOnClickListener {
+////            val day = if(_binding.dpCalendar.dayOfMonth > 9) "0${_binding.dpCalendar.dayOfMonth}" else "${_binding.dpCalendar.dayOfMonth}"
+////            val month = if(_binding.dpCalendar.month > 9) "0${_binding.dpCalendar.month}" else "${_binding.dpCalendar.month}"
+////            val year = if(_binding.dpCalendar.year > 9) "0${_binding.dpCalendar.year}" else "${_binding.dpCalendar.year}"
+////            searchParm.dateFrom = "${year}-${month}-${day}"
+////            Toast.makeText(this,"${searchParm.dateFrom}",Toast.LENGTH_LONG).show()
+//
+////            viewModel.getResultCacth(ResultStateValue.getResultCatch,searchParm)
+//        }
+//
+//        _binding.btnCancleCalendar.setOnClickListener {
+//            dialog.dismiss()
+//        }
+//
+//        dialog.show()
+//
+//    }
+
+
+
+//    private fun dialogDateSearch(){
+//        val calendar = Calendar.getInstance()
+//        var yearNow = calendar.get(Calendar.YEAR)
+//        var monthNow = calendar.get(Calendar.MONTH)
+//        var dateNow = calendar.get(Calendar.DAY_OF_MONTH)
+//
+//        val id = Locale ("in","ID")
+//        val sdf = SimpleDateFormat("yyyy-mm-dd",id)
+////        val datePickerDialog = DatePickerDialog(
+////            this,
+////            object : DatePickerDialog.OnDateSetListener {
+////                override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
+////                    Log.d("asdas","asdasd")
+////                }
+////            },
+////            yearNow,
+////            monthNow,
+////            dateNow
+////        )
+//////        datePickerDialog.setTitle("select date")
+////        datePickerDialog.show()
+//
+//
+//        val datePickerListener = DatePickerDialog.OnDateSetListener {
+//                view, selectedYear, selectedMonth, selectedDay ->
+//
+//                // when dialog box is closed, below method will be called.
+//                if (isOkayClicked) {
+//                    calendar.set(selectedYear,selectedMonth,selectedDay)
+//                    binding.inlcdResultCatchSearch.edtDateFrom.setText(
+//                        sdf.format(calendar.time)
+//                    )
+////                    Toast.makeText(this,"aaaaaaaaaaaaa",Toast.LENGTH_LONG).show()
+//                    yearNow = selectedYear
+//                    monthNow = selectedMonth
+//                    dateNow = selectedDay
+//                }
+//                isOkayClicked = false
+//            }
+//
+//        val datePickerDialog = DatePickerDialog(
+//            this, datePickerListener,
+//            yearNow, monthNow, dateNow
+//        )
+//
+//        datePickerDialog.setButton(
+//            DialogInterface.BUTTON_NEGATIVE,
+//            getString(R.string.cancle_dialog_calender)
+//        ) { dialog, which ->
+//            if (which == DialogInterface.BUTTON_NEGATIVE) {
+//                dialog.cancel()
+//                isOkayClicked = false
+//            }
+//        }
+//
+//        datePickerDialog.setButton(
+//            DialogInterface.BUTTON_POSITIVE,
+//            getString(R.string.ok_dialog_calender)
+//        ) { dialog, which ->
+//            if (which == DialogInterface.BUTTON_POSITIVE) {
+//                isOkayClicked = true
+//                val datePicker = datePickerDialog
+//                    .datePicker
+//                datePickerListener.onDateSet(
+//                    datePicker,
+//                    datePicker.year,
+//                    datePicker.month,
+//                    datePicker.dayOfMonth
+//                )
+//            }
+//        }
+//        datePickerDialog.setCancelable(false)
+//        datePickerDialog.show()
+//
+//    }
+
+
+
 
 //    private fun dialogDateSearch(){
 //        var dialog = Dialog(this)

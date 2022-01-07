@@ -17,51 +17,53 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabCalendar"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"/>
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            app:tabIndicatorColor="@color/yellow"/>
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+<!--            <LinearLayout-->
+<!--                android:id="@+id/lnrCalendarChooser"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                android:background="@color/yellow"-->
+<!--                android:orientation="vertical"-->
+<!--                android:paddingTop="20dp"-->
+<!--                android:paddingBottom="20dp">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/txvMonthSelection"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="JAN 01"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="@dimen/font_size_20" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/txvYearSelection"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textSize="@dimen/font_size_20"-->
+<!--                    android:textColor="@color/transparent"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:text="2022"-->
+<!--                    android:gravity="center"/>-->
+
+<!--            </LinearLayout>-->
+
             <LinearLayout
-                android:id="@+id/lnrCalendarChooser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
-                android:background="@color/yellow"
-                android:orientation="vertical"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp">
-
-                <TextView
-                    android:id="@+id/txvMonthSelection"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="JAN 01"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/font_size_20" />
-
-                <TextView
-                    android:id="@+id/txvYearSelection"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/font_size_20"
-                    android:textColor="@color/transparent"
-                    android:layout_gravity="center"
-                    android:text="2022"
-                    android:gravity="center"/>
-
-            </LinearLayout>
-
-            <androidx.core.widget.NestedScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/lnrCalendarChooser"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -74,25 +76,40 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-<!--                        <DatePicker-->
-<!--                            android:id="@+id/dpCalendar"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:datePickerMode="spinner"-->
-<!--                            android:spinnersShown="false"/>-->
+                        <DatePicker
+                            android:id="@+id/dpCalendarFrom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:datePickerMode="calendar"
+                            android:spinnersShown="true"
+                            android:layout_marginBottom="10dp"
+                            android:minDate="1900"
+                            android:headerBackground="@color/yellow"/>
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/lnrDateTor"
+                        android:id="@+id/lnrDateTo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:visibility="gone"/>
+                        android:visibility="gone">
+
+                        <DatePicker
+                            android:id="@+id/dpCalendarTo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:datePickerMode="calendar"
+                            android:spinnersShown="true"
+                            android:layout_marginBottom="10dp"
+                            android:minDate="1900"
+                            android:headerBackground="@color/yellow"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -100,7 +117,8 @@
             android:id="@+id/cnstrntCalendar2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:id="@+id/btnOkCalendar"

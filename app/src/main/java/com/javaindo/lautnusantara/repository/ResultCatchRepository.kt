@@ -38,12 +38,14 @@ class ResultCatchRepository constructor(
             if(parm.dateFrom != null && parm.dateFrom.length > 0 ||
                 parm.dateTo != null && parm.dateTo.length > 0){
 
-                val sdf = SimpleDateFormat("yyyy-MM-dd")
-                val dateFromParm : Date = sdf.parse(parm.dateFrom)
-                val dateToPParm : Date = sdf.parse(parm.dateFrom)
+                val datefrom = parm.dateFrom.replace("-","")
+                val dateTo = parm.dateTo.replace("-","")
+                val dateSearch = dataDummies.get(i).dateSearch.replace("-","")
 
-                val dateFrom : Date = sdf.parse(dataDummies.get(i).dateProc)
-                if(dateFromParm.after(dateFrom)){
+                if(datefrom.toInt() <= dateSearch.toInt() && dateTo.toInt() >= dateSearch.toInt()){
+
+                    resultCatch = dataDummies.get(i)
+                    resultData.add(resultCatch)
 
                 }
 
@@ -61,6 +63,7 @@ class ResultCatchRepository constructor(
         var result : ArrayList<ResultCatchModel> = ArrayList<ResultCatchModel>()
 
         val rc = ResultCatchModel()
+        rc.dateSearch = "2022-01-05"
         rc.dateProc = "Wed, 01 Dec 21 20:41:38"
         rc.animalName = "Kerapu Karang"
         rc.weightCapture = "1"
@@ -69,7 +72,8 @@ class ResultCatchRepository constructor(
         result.add(rc)
 
         val rc2 = ResultCatchModel()
-        rc2.dateProc = "Wed, 01 Dec 22 20:41:38"
+        rc2.dateSearch = "2022-01-05"
+        rc2.dateProc = "Wed, 02 Dec 22 20:41:38"
         rc2.animalName = "Aru dobo"
         rc2.weightCapture = "20"
         rc2.price = "32.000"
@@ -77,7 +81,8 @@ class ResultCatchRepository constructor(
         result.add(rc2)
 
         val rc3 = ResultCatchModel()
-        rc3.dateProc = "Wed, 01 Dec 23 20:41:38"
+        rc3.dateSearch = "2022-01-06"
+        rc3.dateProc = "Wed, 03 Dec 23 20:41:38"
         rc3.animalName = "Tenggiri"
         rc3.weightCapture = "0"
         rc3.price = "0"
@@ -85,7 +90,8 @@ class ResultCatchRepository constructor(
         result.add(rc3)
 
         val rc4 = ResultCatchModel()
-        rc4.dateProc = "Wed, 01 Dec 24 20:41:38"
+        rc4.dateSearch = "2022-01-07"
+        rc4.dateProc = "Wed, 03 Dec 24 20:41:38"
         rc4.animalName = "Tuna Mata Biasa"
         rc4.weightCapture = "50"
         rc4.price = "25.000"
@@ -93,7 +99,8 @@ class ResultCatchRepository constructor(
         result.add(rc4)
 
         val rc5 = ResultCatchModel()
-        rc5.dateProc = "Wed, 01 Dec 25 20:41:38"
+        rc5.dateSearch = "2021-01-08"
+        rc5.dateProc = "Wed, 04 Dec 25 20:41:38"
         rc5.animalName = "Ikan Tuna"
         rc5.weightCapture = "0"
         rc5.price = "0"
