@@ -88,6 +88,10 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
 
     private var isClickZee = false
     private var isClickSatellite = false
+    private var isRoute = false
+    private var markerList : ArrayList<Marker> = ArrayList<Marker>()
+    private var latLongs :  ArrayList<LatLng> = ArrayList<LatLng>()
+    private var polyLines :  ArrayList<Polyline> = ArrayList<Polyline>()
 
     @Inject
     lateinit var prefHelp: PrefHelper
@@ -142,19 +146,6 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
     }
 
     private fun onClick(){
-//        binding.headerPageLN.edtSearchCity.addTextChangedListener(object : TextWatcher {
-//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//            }
-//
-//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//            }
-//
-//            override fun afterTextChanged(p0: Editable?) {
-//                gotToPlace()
-//            }
-//
-//        })
-
         binding.headerPageLN.edtSearchCity.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
@@ -188,18 +179,6 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
     }
 
     private fun setColorPotential(){
-//        val paint = textView.paint
-//        val width = paint.measureText(textView.text.toString())
-//        val textShader: Shader = LinearGradient(0f, 0f, width, textView.textSize, intArrayOf(
-//            Color.parseColor("#F97C3C"),
-//            Color.parseColor("#FDB54E"),
-//            /*Color.parseColor("#64B678"),
-//            Color.parseColor("#478AEA"),*/
-//            Color.parseColor("#8446CC")
-//        ), null, Shader.TileMode.REPEAT)
-//
-//        binding.incldBottomSheet.incldPotential.colorGradientPotential.paint.setShader(textShader)
-
         val gradientDrawable = GradientDrawable(
             GradientDrawable.Orientation.TOP_BOTTOM,
             intArrayOf(Color.parseColor("#fe0000"),
@@ -249,23 +228,10 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
             }
 
             override fun onStateChanged(bottomSheet: View, newState: Int) {
-//                    when (newState) {
-//                        BottomSheetBehavior.STATE_COLLAPSED -> Toast.makeText(this@LN_LBCYBAActivity, "STATE_COLLAPSED", Toast.LENGTH_SHORT).show()
-//                        BottomSheetBehavior.STATE_EXPANDED -> Toast.makeText(this@LN_LBCYBAActivity, "STATE_EXPANDED", Toast.LENGTH_SHORT).show()
-//                        BottomSheetBehavior.STATE_DRAGGING -> Toast.makeText(this@LN_LBCYBAActivity, "STATE_DRAGGING", Toast.LENGTH_SHORT).show()
-//                        BottomSheetBehavior.STATE_SETTLING -> Toast.makeText(this@LN_LBCYBAActivity, "STATE_SETTLING", Toast.LENGTH_SHORT).show()
-//                        BottomSheetBehavior.STATE_HIDDEN -> Toast.makeText(this@LN_LBCYBAActivity, "STATE_HIDDEN", Toast.LENGTH_SHORT).show()
-//                        else -> Toast.makeText(this@LN_LBCYBAActivity, "OTHER_STATE", Toast.LENGTH_SHORT).show()
-//                    }
+
             }
         })
 
-//            binding.btnBottomSheetPersistent.setOnClickListener {
-//                if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED)
-//                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-//                else
-//                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-//            }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -327,47 +293,29 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
         }
         this.map = googleMap
 
-//        mMap = googleMap
-//
-//        // Add a marker in Sydney and move the camera
-//        val sydney = LatLng(-34.0, 151.0)
-//        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-
-
-//        this.map!!.mapType = GoogleMap.MAP_TYPE_SATELLITE
         this.map!!.setMinZoomPreference(1.0f)
         this.map!!.setMaxZoomPreference(20.0f)
         this.map!!.uiSettings.isMyLocationButtonEnabled = false
         this.map!!.isMyLocationEnabled = false
 
-        // Use a custom info window adapter to handle multiple lines of text in the
-        // info window contents.
-        this.map?.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
-            // Return null here, so that getInfoContents() is called next.
-            override fun getInfoWindow(arg0: Marker): View? {
-                return null
-            }
+        this.map!!.setOnMapClickListener(GoogleMap.OnMapClickListener { latLong ->
+            if(isRoute){
+                var mark = this.map!!.addMarker(MarkerOptions().position(latLong))
+                markerList.add(mark!!)
 
-            override fun getInfoContents(marker: Marker): View {
-                // Inflate the layouts for the info window, title and snippet.
-                val infoWindow = layoutInflater.inflate(R.layout.custom_info_contents,
-                    findViewById<FrameLayout>(R.id.map), false)
-                val title = infoWindow.findViewById<TextView>(R.id.title)
-                title.text = marker.title
-                val snippet = infoWindow.findViewById<TextView>(R.id.snippet)
-                snippet.text = marker.snippet
-                return infoWindow
+                latLongs.add(latLong)
+                var lineOption = this.map!!.addPolyline(PolylineOptions()
+                    .color(getColor(R.color.red))
+                    .width(15f)
+                    .addAll(latLongs))
+
+                polyLines.add(lineOption)
+
             }
         })
 
-        // Prompt the user for permission.
         getLocationPermission()
-
-        // Turn on the My Location layer and the related control on the map.
         updateLocationUI()
-
-        // Get the current location of the device and set the position of the map.
         getDeviceLocation()
     }
 
@@ -425,115 +373,6 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        if (item.itemId == R.id.option_get_place) {
-//            showCurrentPlace()
-//        }
-        return true
-    }
-
-    @SuppressLint("MissingPermission")
-    private fun showCurrentPlace() {
-        if (map == null) {
-            return
-        }
-        if (locationPermissionGranted) {
-            // Use fields to define the data types to return.
-            val placeFields = listOf(Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG)
-
-            // Use the builder to create a FindCurrentPlaceRequest.
-            val request = FindCurrentPlaceRequest.newInstance(placeFields)
-
-            // Get the likely places - that is, the businesses and other points of interest that
-            // are the best match for the device's current location.
-            val placeResult = placesClient.findCurrentPlace(request)
-            placeResult.addOnCompleteListener { task ->
-                if (task.isSuccessful && task.result != null) {
-                    val likelyPlaces = task.result
-
-                    // Set the count, handling cases where less than 5 entries are returned.
-                    val count = if (likelyPlaces != null && likelyPlaces.placeLikelihoods.size < LN_LBCYBAActivity.M_MAX_ENTRIES) {
-                        likelyPlaces.placeLikelihoods.size
-                    } else {
-                        LN_LBCYBAActivity.M_MAX_ENTRIES
-                    }
-                    var i = 0
-                    likelyPlaceNames = arrayOfNulls(count)
-                    likelyPlaceAddresses = arrayOfNulls(count)
-                    likelyPlaceAttributions = arrayOfNulls<List<*>?>(count)
-                    likelyPlaceLatLngs = arrayOfNulls(count)
-                    for (placeLikelihood in likelyPlaces?.placeLikelihoods ?: emptyList()) {
-                        // Build a list of likely places to show the user.
-                        likelyPlaceNames[i] = placeLikelihood.place.name
-                        likelyPlaceAddresses[i] = placeLikelihood.place.address
-                        likelyPlaceAttributions[i] = placeLikelihood.place.attributions
-                        likelyPlaceLatLngs[i] = placeLikelihood.place.latLng
-                        i++
-                        if (i > count - 1) {
-                            break
-                        }
-                    }
-
-                    // Show a dialog offering the user the list of likely places, and add a
-                    // marker at the selected place.
-                    openPlacesDialog()
-                } else {
-                    Log.e(TAG, "Exception: %s", task.exception)
-                }
-            }
-        } else {
-            // The user has not granted permission.
-            Log.i(TAG, "The user did not grant location permission.")
-
-            // Add a default marker, because the user hasn't selected a place.
-            map?.addMarker(
-                MarkerOptions()
-                .title(getString(R.string.default_info_title))
-                .position(defaultLocation)
-                .snippet(getString(R.string.default_info_snippet)))
-
-            // Prompt the user for permission.
-            getLocationPermission()
-        }
-    }
-
-    private fun openPlacesDialog() {
-        // Ask the user to choose the place where they are now.
-        val listener = DialogInterface.OnClickListener { dialog, which -> // The "which" argument contains the position of the selected item.
-            val markerLatLng = likelyPlaceLatLngs[which]
-            var markerSnippet = likelyPlaceAddresses[which]
-            if (likelyPlaceAttributions[which] != null) {
-                markerSnippet = """
-                $markerSnippet
-                ${likelyPlaceAttributions[which]}
-                """.trimIndent()
-            }
-
-            if (markerLatLng == null) {
-                return@OnClickListener
-            }
-
-            // Add a marker for the selected place, with an info window
-            // showing information about that place.
-            map?.addMarker(
-                MarkerOptions()
-                .title(likelyPlaceNames[which])
-                .position(markerLatLng)
-                .snippet(markerSnippet))
-
-            // Position the map's camera at the location of the marker.
-            map?.moveCamera(
-                CameraUpdateFactory.newLatLngZoom(markerLatLng,
-                LN_LBCYBAActivity.DEFAULT_ZOOM.toFloat()))
-        }
-
-        // Display the dialog.
-        AlertDialog.Builder(this)
-            .setTitle(R.string.pick_place)
-            .setItems(likelyPlaceNames, listener)
-            .show()
-    }
-
     private fun mapSatellite(){
         try {
             map?.mapType = GoogleMap.MAP_TYPE_SATELLITE
@@ -555,17 +394,17 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
     }
 
     private fun mapZEE(){
-        try {
-            val success = map?.setMapStyle(
-                MapStyleOptions.loadRawResourceStyle(
-                    this, R.raw.style_json)
-            )
-            if (!success!!) {
-                Log.e(TAG, "Style parsing failed.")
-            }
-        } catch (e: Resources.NotFoundException) {
-            Log.e(TAG, "Can't find style. Error: ", e)
-        }
+//        try {
+//            val success = map?.setMapStyle(
+//                MapStyleOptions.loadRawResourceStyle(
+//                    this, R.raw.style_json)
+//            )
+//            if (!success!!) {
+//                Log.e(TAG, "Style parsing failed.")
+//            }
+//        } catch (e: Resources.NotFoundException) {
+//            Log.e(TAG, "Can't find style. Error: ", e)
+//        }
     }
 
     private fun layersDailog(){
@@ -591,6 +430,7 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
                 isClickZee = false
             } else {
                 isClickZee = true
+                mapZEE()
             }
 
             dialog.dismiss()
@@ -617,6 +457,20 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
 
     }
 
+    private fun removeAllMarker(){
+        for(i in markerList.indices){
+            markerList.get(i).remove()
+        }
+        removePolyline()
+    }
+
+    private fun removePolyline(){
+        for (i in polyLines.indices){
+            polyLines.get(i).remove()
+        }
+        latLongs = ArrayList<LatLng>()
+    }
+
     private fun hideExceptRoute(){
         binding.incldBottomSheet.bottomSheet.visibility = View.GONE
         binding.headerPageLN.lnrTextSearchMap.visibility = View.GONE
@@ -624,6 +478,7 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
         binding.rltvLayersImg2.visibility = View.GONE
 
         binding.incldLayerRoute2.lnrRouteContent.visibility = View.VISIBLE
+        isRoute = true
     }
 
     private fun showExceptRoute(){
@@ -633,6 +488,8 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
         binding.rltvLayersImg2.visibility = View.VISIBLE
 
         binding.incldLayerRoute2.lnrRouteContent.visibility = View.GONE
+        isRoute = false
+        removeAllMarker()
     }
 
     private fun searchLocation(){
@@ -652,9 +509,9 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
             }
             val address = addressList!![0]
             val latLng = LatLng(address.latitude, address.longitude)
-            map!!.addMarker(MarkerOptions().position(latLng).title(location))
+//            map!!.addMarker(MarkerOptions().position(latLng).title(location))
             map!!.animateCamera(CameraUpdateFactory.newLatLng(latLng))
-            Toast.makeText(applicationContext, address.latitude.toString() + " " + address.longitude, Toast.LENGTH_LONG).show()
+//            Toast.makeText(applicationContext, address.latitude.toString() + " " + address.longitude, Toast.LENGTH_LONG).show()
         }
     }
 
