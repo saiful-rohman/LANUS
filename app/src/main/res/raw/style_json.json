@@ -1,5 +1,15 @@
 [
   {
+    "featureType": "administrative.province",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "visibility": "on"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.province",
     "elementType": "labels",
     "stylers": [
       {
@@ -8,7 +18,16 @@
     ]
   },
   {
-    "featureType": "administrative",
+    "featureType": "administrative.country",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "on"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.locality",
     "elementType": "geometry",
     "stylers": [
       {
@@ -56,8 +75,13 @@
         "visibility": "off"
       }
     ]
-  },
-  {
+  },{
+    "featureType": "landscape",
+    "elementType": "labels",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
     "featureType": "road.highway",
     "elementType": "labels",
     "stylers": [

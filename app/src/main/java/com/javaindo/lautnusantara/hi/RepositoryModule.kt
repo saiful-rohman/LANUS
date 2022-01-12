@@ -18,12 +18,12 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideDatakuRepo(
-        datakuDao: DatakuDao,
+        settingUserDao: SettingUserDao,
         api: API,
-        cacheMapper: DatakuCacheMapper,
-        networkMapper: DatakuNetworkMapper
+        cacheMapper : SettingUserCacheMapper,
+        networkMapper : SettingUserNetworkMapper
     ): DatakuRepository{
-        return DatakuRepository(datakuDao,api,cacheMapper,networkMapper)
+        return DatakuRepository(settingUserDao,api,cacheMapper,networkMapper)
     }
 
     @Provides

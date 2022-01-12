@@ -125,4 +125,31 @@
         <item>Kakap Merah</item>
     </string-array>
 
+    <string-array name="cities">
+        <item>Jakarta Selatan</item>
+        <item>Jakarta Timur</item>
+        <item>Jakarta Pusat</item>
+        <item>Jakarta Barat</item>
+        <item>Jakarta Utara</item>
+        <item>Tangerang</item>
+        <item>Tangerang Selatan</item>
+        <item>Bogor</item>
+        <item>Pelabuhan Tanjung Mas</item>
+        <item>Pelabuhan Tanjung Intan</item>
+        <item>Pelabuhan Kalianget</item>
+        <item>Pelabuhan Kalimas</item>
+        <item>Pelabuhan Kamal</item>
+        <item>Pelabuhan Ketapang</item>
+        <item>Depok</item>
+        <item>Denpasar</item>
+        <item>Pulau Deli</item>
+        <item>Semarang</item>
+        <item>Pelabuhan Semayang</item>
+        <item>Pelabuhan Tanjung Priok</item>
+        <item>Pelabuhan Tanjung Mas</item>
+        <item>Manado</item>
+        <item>Ambon</item>
+        <item>Lombok</item>
+    </string-array>
+
 </resources>

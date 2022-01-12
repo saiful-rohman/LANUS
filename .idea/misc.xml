@@ -55,7 +55,7 @@
         <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/content_header_help_center.xml" value="0.1" />
         <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/content_header_home.xml" value="0.19629057187017002" />
         <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/content_header_live_chat.xml" value="0.1381340579710145" />
-        <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/content_header_ln.xml" value="0.1" />
+        <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/content_header_ln.xml" value="0.14666666666666667" />
         <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/content_header_ln_calculate_fuel.xml" value="0.1" />
         <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/content_header_ln_laut_pesisir_khusus.xml" value="0.1" />
         <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/content_header_ln_lbcyba.xml" value="0.14764492753623187" />
@@ -68,6 +68,7 @@
         <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/content_lnpesisirkhusus_adapter.xml" value="0.3111111111111111" />
         <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/content_potenttion.xml" value="0.10666666666666667" />
         <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/content_result_catch_search.xml" value="0.3333333333333333" />
+        <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/content_route_layer.xml" value="0.14447463768115942" />
         <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/content_search_parameter.xml" value="0.2936344969199179" />
         <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/content_seliing_price.xml" value="0.16666666666666666" />
         <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/content_selling_price_entry.xml" value="0.14764492753623187" />
@@ -75,6 +76,7 @@
         <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/custom_info_contents.xml" value="0.1" />
         <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/dialog_calendar.xml" value="0.13333333333333333" />
         <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/dialog_choose_setting.xml" value="0.125" />
+        <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/dialog_layers.xml" value="0.16666666666666666" />
         <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/fragment_account.xml" value="0.22" />
         <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/fragment_calendar_from.xml" value="0.34024896265560167" />
         <entry key="..\:/XL Client/LautNusantara/app/src/main/res/layout/fragment_calendar_to.xml" value="0.13269927536231885" />

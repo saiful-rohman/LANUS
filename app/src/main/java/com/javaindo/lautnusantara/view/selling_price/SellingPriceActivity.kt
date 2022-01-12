@@ -82,7 +82,7 @@ class SellingPriceActivity : AppCompatActivity() {
         binding = ActivitySellingPriceBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setPartData()
+        setPartInit()
         subscribeObserve()
         processData()
         onCLick()
@@ -92,7 +92,7 @@ class SellingPriceActivity : AppCompatActivity() {
         viewModel.getSellPriceData(SellingPriceStateEvent.GetSellPrice,searchParm)
     }
 
-    private fun setPartData(){
+    private fun setPartInit(){
         binding.headerPage.imgLogoLN.setImageResource(R.drawable.ln_hargajual)
         binding.headerPage.txvTitleMenu.text = getString(R.string.text_title_LN_hargajual)
 

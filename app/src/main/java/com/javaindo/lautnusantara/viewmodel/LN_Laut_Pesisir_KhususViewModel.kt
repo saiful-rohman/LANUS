@@ -20,7 +20,7 @@ class LN_Laut_Pesisir_KhususViewModel @Inject constructor(
     private val _latLongList :MutableLiveData<DataState<List<LatLongModel>>> = MutableLiveData()
     val latLongList : LiveData<DataState<List<LatLongModel>>> get() = _latLongList
 
-    fun setStateEvent(latLongStateEvent: LatLongStateEvent){
+    fun getLatLongData(latLongStateEvent: LatLongStateEvent){
         when(latLongStateEvent){
             is LatLongStateEvent.GetLatLong -> {
                 latLongRepository.getLatLongData().onEach { dataState ->

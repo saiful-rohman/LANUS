@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/matgin_button_layers">
+
+    <RelativeLayout
+        android:id="@+id/lnrZEE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="@dimen/font_size_16"
+            android:text="Tampilkan Garis ZEE"/>
+
+        <ImageView
+            android:id="@+id/imgZee"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:src="@drawable/button_passif"
+            android:scaleType="centerCrop"
+            android:layout_alignParentRight="true"
+            android:padding="2dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/lnrZEE"
+        android:layout_marginTop="@dimen/matgin_button_layers">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="@dimen/font_size_16"
+            android:text="Tampilkan Satelit"/>
+
+        <ImageView
+            android:id="@+id/imgSatellite"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:src="@drawable/button_passif"
+            android:scaleType="centerCrop"
+            android:layout_alignParentRight="true"
+            android:padding="2dp"/>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

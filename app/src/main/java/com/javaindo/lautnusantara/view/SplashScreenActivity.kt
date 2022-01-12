@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.javaindo.lautnusantara.databinding.ActivitySplashScreenBinding
 import com.javaindo.lautnusantara.model.DatakuModel
+import com.javaindo.lautnusantara.model.SettingUserModel
 import com.javaindo.lautnusantara.utility.DataState
 import com.javaindo.lautnusantara.utility.PrefHelper
 import com.javaindo.lautnusantara.utility.SharedPrefKeys
@@ -53,25 +55,36 @@ class SplashScreenActivity : AppCompatActivity() {
         }
 
         //tes data
-//        subscribeObserve()
+        subscribeObserve()
 //        viewModel.setStateEvent(MainStateEvent.GetDatakuEvent)
+        viewModel.getSettingUser()
     }
 
-//    private fun subscribeObserve(){
-//        viewModel.dataState.observe(this, Observer { dataSate ->
-//            when(dataSate){
-//                is DataState.Success<List<DatakuModel>> -> {
-//                    appendStringData(dataSate.data)
-//                }
-//                is DataState.Error -> {
-//                    displayError(dataSate.exception.message.toString())
-//                }
-//                is DataState.Loading -> {
-//                    displayLoading(true)
-//                }
-//            }
-//        })
-//    }
+    private fun subscribeObserve(){
+        viewModel.settingValues.observe(this, Observer { dataSet ->
+            when(dataSet){
+                is DataState.Success<SettingUserModel> -> {
+//                    binding.prgsLoading.visibility = View.GONE
+//                    binding.scrlContent.visibility = View.VISIBLE
+                    prefHelp.setIntToShared(SharedPrefKeys.idUserSetting(),dataSet.data.id)
+                    prefHelp.setStringToShared(SharedPrefKeys.bbmConsume(),dataSet.data.bbmConsume)
+                    prefHelp.setStringToShared(SharedPrefKeys.mileage(),dataSet.data.mileage)
+                    prefHelp.setStringToShared(SharedPrefKeys.speed(),dataSet.data.speed)
+                    prefHelp.setStringToShared(SharedPrefKeys.brandEngine(),dataSet.data.brandEngine)
+                    prefHelp.setStringToShared(SharedPrefKeys.engine(),dataSet.data.engine)
+                }
+                is DataState.Error ->{
+//                    binding.prgsLoading.visibility = View.GONE
+//                    binding.scrlContent.visibility = View.VISIBLE
+                    Toast.makeText(this, "${dataSet.exception.message}",Toast.LENGTH_LONG).show()
+                }
+                is DataState.Loading -> {
+//                    binding.prgsLoading.visibility = View.VISIBLE
+//                    binding.scrlContent.visibility = View.GONE
+                }
+            }
+        })
+    }
 
     private fun displayError(message : String){
         if(message != null){

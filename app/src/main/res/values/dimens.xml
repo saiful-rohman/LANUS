@@ -76,5 +76,11 @@
 
     <dimen name="margin_left_right_calendar">10dp</dimen>
     <dimen name="margin_top_bottom_calendar">30dp</dimen>
+    <dimen name="matgin_button_layers">30dp</dimen>
+
+    <dimen name="margin_left_right_route_layer_map">20dp</dimen>
+    <dimen name="margin_left_right_route_layer_map_content">10dp</dimen>
+    <dimen name="padding_top_bottom_route_layer_map">8dp</dimen>
+    <dimen name="cardcorner_route">5dp</dimen>
 
 </resources>

@@ -1,34 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".view.LN_laut_pesisir_khusus.LN_Laut_Pesisir_KhususActivity">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.LN_laut_pesisir_khusus.LN_Laut_Pesisir_KhususActivity">
 
-    <LinearLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/crdntLnLautPesisirKhusus"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/header_pageLN"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            layout="@layout/content_header_ln"/>
-
-        <fragment
-            android:id="@+id/mapln"
-            xmlns:map="http://schemas.android.com/apk/res-auto"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            map:cameraZoom="13"/>
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <include
+                android:id="@+id/header_pageLN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/content_header_ln"/>
+
+            <fragment
+                android:id="@+id/mapln"
+                xmlns:map="http://schemas.android.com/apk/res-auto"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                map:cameraZoom="13"/>
+
+        </LinearLayout>
+
+        <include
+            android:id="@+id/incldBottomSheet"
+            layout="@layout/content_ln_laut_pesisir_khusus_bottomsheet"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <RelativeLayout
+        android:id="@+id/rltvLayersImg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgLayers"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/layer_satellite"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:scaleType="centerCrop"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rtlvRouteLayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="70dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgLayerRoute"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/route_layer"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:scaleType="centerCrop"/>
+
+    </RelativeLayout>
 
     <include
-        android:id="@+id/incldBottomSheet"
-        layout="@layout/content_ln_laut_pesisir_khusus_bottomsheet"/>
+        android:id="@+id/incldLayerRoute"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/content_route_layer"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

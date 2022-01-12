@@ -33,7 +33,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:background="@drawable/border_text_input_login"
-            android:textSize="18dp"/>
+            android:textSize="18dp"
+            android:inputType="textPersonName"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

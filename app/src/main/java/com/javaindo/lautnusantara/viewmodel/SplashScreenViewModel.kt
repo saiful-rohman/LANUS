@@ -2,6 +2,7 @@ package com.javaindo.lautnusantara.viewmodel
 
 import androidx.lifecycle.*
 import com.javaindo.lautnusantara.model.DatakuModel
+import com.javaindo.lautnusantara.model.SettingUserModel
 import com.javaindo.lautnusantara.repository.DatakuRepository
 import com.javaindo.lautnusantara.utility.DataState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,8 +18,11 @@ class SplashScreenViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel(){
 
-    private val _dataState : MutableLiveData<DataState<List<DatakuModel>>> = MutableLiveData()
-    val dataState : LiveData<DataState<List<DatakuModel>>> get() = _dataState
+    val _settingValues : MutableLiveData<DataState<SettingUserModel>> = MutableLiveData()
+    val settingValues : LiveData<DataState<SettingUserModel>> get() = _settingValues
+
+//    private val _dataState : MutableLiveData<DataState<List<DatakuModel>>> = MutableLiveData()
+//    val dataState : LiveData<DataState<List<DatakuModel>>> get() = _dataState
 
 //    fun setStateEvent(mainStateEvent: MainStateEvent){
 //        viewModelScope.launch {
@@ -34,6 +38,14 @@ class SplashScreenViewModel @Inject constructor(
 //            }
 //        }
 //    }
+
+    fun getSettingUser(){
+        viewModelScope.launch {
+            datakuRepository.getUsetSettings().onEach { data ->
+                _settingValues.value = data
+            }.launchIn(viewModelScope)
+        }
+    }
 
 }
 

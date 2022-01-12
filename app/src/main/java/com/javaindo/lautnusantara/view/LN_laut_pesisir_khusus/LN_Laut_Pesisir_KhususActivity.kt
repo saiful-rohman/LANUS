@@ -2,17 +2,26 @@ package com.javaindo.lautnusantara.view.LN_laut_pesisir_khusus
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Dialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.pm.PackageManager
 import android.content.res.Resources
+import android.location.Address
+import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.Window
 import android.widget.ArrayAdapter
 import android.widget.FrameLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -36,12 +45,20 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.javaindo.lautnusantara.BuildConfig
 import com.javaindo.lautnusantara.R
 import com.javaindo.lautnusantara.databinding.ActivityLnLautPesisirKhususBinding
+import com.javaindo.lautnusantara.databinding.DialogLayersBinding
 import com.javaindo.lautnusantara.model.LatLongModel
 import com.javaindo.lautnusantara.utility.DataState
+import com.javaindo.lautnusantara.utility.PrefHelper
+import com.javaindo.lautnusantara.utility.SharedPrefKeys
 import com.javaindo.lautnusantara.view.LN_laut_pesisir_khusus.adapter.LNLautPesisirKhususAdapter
 import com.javaindo.lautnusantara.viewmodel.LN_Laut_Pesisir_KhususViewModel
 import com.javaindo.lautnusantara.viewmodel.LatLongStateEvent
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.IOException
+import javax.inject.Inject
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.TextView.OnEditorActionListener
 
 
 //import com.javaindo.lautnusantara.view.LN_laut_pesisir_khusus.adapter.LNLautPesisirKhususAdapter
@@ -79,6 +96,12 @@ class LN_Laut_Pesisir_KhususActivity : AppCompatActivity(), OnMapReadyCallback {
     private var likelyPlaceAttributions: Array<List<*>?> = arrayOfNulls(0)
     private var likelyPlaceLatLngs: Array<LatLng?> = arrayOfNulls(0)
 
+    private var isClickZee = false
+    private var isClickSatellite = false
+
+    @Inject
+    lateinit var prefHelp: PrefHelper
+
     companion object{
         private const val DEFAULT_ZOOM = 10
         private const val PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1
@@ -103,9 +126,8 @@ class LN_Laut_Pesisir_KhususActivity : AppCompatActivity(), OnMapReadyCallback {
         typePage = intet.getStringExtra("typePage").toString().toInt()
 
         subscribeObserve()
-        viewModel.setStateEvent(LatLongStateEvent.GetLatLong)
-
-        setPartData()
+        viewModel.getLatLongData(LatLongStateEvent.GetLatLong)
+        setPartInit()
         setBootomsheet()
         onClick()
 
@@ -127,12 +149,56 @@ class LN_Laut_Pesisir_KhususActivity : AppCompatActivity(), OnMapReadyCallback {
 
     }
 
-    private fun setPartData(){
+    private fun setPartInit(){
+        binding.headerPageLN.edtSearchCity.setAdapter(ArrayAdapter(this,android.R.layout.simple_list_item_1,resources.getStringArray(R.array.cities)))
+
+        binding.incldLayerRoute.txvEngine.text = prefHelp.getStringFromShared(SharedPrefKeys.brandEngine())
+
         setImageLogo(typePage)
         setTitlePage(typePage)
     }
 
     private fun onClick(){
+//        binding.headerPageLN.edtSearchCity.addTextChangedListener(object : TextWatcher{
+//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//            }
+//
+//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//            }
+//
+//            override fun afterTextChanged(p0: Editable?) {
+//                searchLocation()
+//            }
+//
+//        })
+
+        binding.headerPageLN.edtSearchCity.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+                imm?.hideSoftInputFromWindow(v.windowToken, 0)
+                searchLocation()
+
+                return@OnEditorActionListener true
+            }
+            false
+        })
+
+        binding.incldLayerRoute.imgCloseRouteLayer.setOnClickListener {
+            showExceptRoute()
+        }
+
+        binding.imgLayerRoute.setOnClickListener {
+            routeMap()
+        }
+
+        binding.imgLayers.setOnClickListener {
+            layersDailog()
+        }
+
+        binding.headerPageLN.imgToLocation.setOnClickListener {
+            getDeviceLocation()
+        }
+
         binding.headerPageLN.imgVBack.setOnClickListener {
             this.finish()
         }
@@ -268,37 +334,30 @@ class LN_Laut_Pesisir_KhususActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         this.map = googleMap
 
-//        mMap = googleMap
-//
-//        // Add a marker in Sydney and move the camera
-//        val sydney = LatLng(-34.0, 151.0)
-//        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-
-
-//        this.map!!.mapType = GoogleMap.MAP_TYPE_SATELLITE
         this.map!!.setMinZoomPreference(1.0f)
         this.map!!.setMaxZoomPreference(20.0f)
+        this.map!!.uiSettings.isMyLocationButtonEnabled = false
+        this.map!!.isMyLocationEnabled = false
 
-        // Use a custom info window adapter to handle multiple lines of text in the
-        // info window contents.
-        this.map?.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
-            // Return null here, so that getInfoContents() is called next.
-            override fun getInfoWindow(arg0: Marker): View? {
-                return null
-            }
-
-            override fun getInfoContents(marker: Marker): View {
-                // Inflate the layouts for the info window, title and snippet.
-                val infoWindow = layoutInflater.inflate(R.layout.custom_info_contents,
-                    findViewById<FrameLayout>(R.id.map), false)
-                val title = infoWindow.findViewById<TextView>(R.id.title)
-                title.text = marker.title
-                val snippet = infoWindow.findViewById<TextView>(R.id.snippet)
-                snippet.text = marker.snippet
-                return infoWindow
-            }
-        })
+//        // Use a custom info window adapter to handle multiple lines of text in the
+//        // info window contents.
+//        this.map?.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
+//            // Return null here, so that getInfoContents() is called next.
+//            override fun getInfoWindow(arg0: Marker): View? {
+//                return null
+//            }
+//
+//            override fun getInfoContents(marker: Marker): View {
+//                // Inflate the layouts for the info window, title and snippet.
+//                val infoWindow = layoutInflater.inflate(R.layout.custom_info_contents,
+//                    findViewById<FrameLayout>(R.id.map), false)
+//                val title = infoWindow.findViewById<TextView>(R.id.title)
+//                title.text = marker.title
+//                val snippet = infoWindow.findViewById<TextView>(R.id.snippet)
+//                snippet.text = marker.snippet
+//                return infoWindow
+//            }
+//        })
 
         // Prompt the user for permission.
         getLocationPermission()
@@ -318,7 +377,7 @@ class LN_Laut_Pesisir_KhususActivity : AppCompatActivity(), OnMapReadyCallback {
         try {
             if (locationPermissionGranted) {
                 map?.isMyLocationEnabled = true
-                map?.uiSettings?.isMyLocationButtonEnabled = true
+                map?.uiSettings?.isMyLocationButtonEnabled = false
             } else {
                 map?.isMyLocationEnabled = false
                 map?.uiSettings?.isMyLocationButtonEnabled = false
@@ -466,6 +525,181 @@ class LN_Laut_Pesisir_KhususActivity : AppCompatActivity(), OnMapReadyCallback {
             .setTitle(R.string.pick_place)
             .setItems(likelyPlaceNames, listener)
             .show()
+    }
+
+    private fun mapSatellite(){
+        try {
+            map?.mapType = GoogleMap.MAP_TYPE_SATELLITE
+        } catch (l : Exception){
+            Log.e(TAG, "${l}")
+        } catch (e : Resources.NotFoundException) {
+            Log.e(TAG, "Can't find style. Error: ", e)
+        }
+    }
+
+    private fun mapNormal(){
+        try {
+            map?.mapType = GoogleMap.MAP_TYPE_NORMAL
+        } catch (l : Exception){
+            Log.e(TAG, "${l}")
+        } catch (e : Resources.NotFoundException) {
+            Log.e(TAG, "Can't find style. Error: ", e)
+        }
+    }
+
+    private fun mapZEE(){
+        try {
+            val success = map?.setMapStyle(
+                MapStyleOptions.loadRawResourceStyle(
+                    this, R.raw.style_json)
+            )
+            if (!success!!) {
+                Log.e(TAG, "Style parsing failed.")
+            }
+        } catch (e: Resources.NotFoundException) {
+            Log.e(TAG, "Can't find style. Error: ", e)
+        }
+    }
+
+    private fun layersDailog(){
+        val dialog = Dialog(this)
+        val _binding = DialogLayersBinding.inflate(LayoutInflater.from(this))
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(_binding.root)
+
+        if(isClickSatellite){
+            _binding.imgSatellite.setImageResource(R.drawable.button_active)
+        } else {
+            _binding.imgSatellite.setImageResource(R.drawable.button_passif)
+        }
+
+        if(isClickZee){
+            _binding.imgZee.setImageResource(R.drawable.button_active)
+        } else {
+            _binding.imgZee.setImageResource(R.drawable.button_passif)
+        }
+
+        _binding.imgZee.setOnClickListener {
+            if(isClickZee){
+                isClickZee = false
+            } else {
+                isClickZee = true
+            }
+
+            dialog.dismiss()
+        }
+
+        _binding.imgSatellite.setOnClickListener {
+            if(isClickSatellite){
+                isClickSatellite = false
+                mapNormal()
+            } else {
+                isClickSatellite = true
+                mapSatellite()
+            }
+
+            dialog.dismiss()
+        }
+
+        dialog.show()
+
+    }
+
+    //backup
+//    private fun layersDailog(){
+//        val dialog = Dialog(this)
+//        val _binding = DialogLayersBinding.inflate(LayoutInflater.from(this))
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+//        dialog.setContentView(_binding.root)
+//
+//        if(isClickSatellite){
+//            _binding.imgSatellite.setImageResource(R.drawable.button_active)
+//        } else {
+//            _binding.imgSatellite.setImageResource(R.drawable.button_passif)
+//        }
+//
+//        if(isClickZee){
+//            _binding.imgZee.setImageResource(R.drawable.button_active)
+//        } else {
+//            _binding.imgZee.setImageResource(R.drawable.button_passif)
+//        }
+//
+//        _binding.imgZee.setOnClickListener {
+//            if(isClickZee){
+//                isClickZee = false
+//                isClickSatellite = true
+//                mapSatellite()
+//            } else {
+//                mapZEE()
+//                isClickSatellite = false
+//                isClickZee = true
+//            }
+//
+//            dialog.dismiss()
+//        }
+//
+//        _binding.imgSatellite.setOnClickListener {
+//            if(isClickSatellite){
+//                mapZEE()
+//                isClickZee = true
+//                isClickSatellite = false
+//            } else {
+//                mapSatellite()
+//                isClickSatellite = true
+//                isClickZee = false
+//            }
+//
+//            dialog.dismiss()
+//        }
+//
+//        dialog.show()
+//
+//    }
+
+    private fun routeMap(){
+        hideExceptRoute()
+
+    }
+
+    private fun hideExceptRoute(){
+        binding.incldBottomSheet.bottomSheet.visibility = View.GONE
+        binding.headerPageLN.lnrTextSearchMap.visibility = View.GONE
+        binding.rtlvRouteLayer.visibility = View.GONE
+        binding.rltvLayersImg.visibility = View.GONE
+
+        binding.incldLayerRoute.lnrRouteContent.visibility = View.VISIBLE
+    }
+
+    private fun showExceptRoute(){
+        binding.incldBottomSheet.bottomSheet.visibility = View.VISIBLE
+        binding.headerPageLN.lnrTextSearchMap.visibility = View.VISIBLE
+        binding.rtlvRouteLayer.visibility = View.VISIBLE
+        binding.rltvLayersImg.visibility = View.VISIBLE
+
+        binding.incldLayerRoute.lnrRouteContent.visibility = View.GONE
+    }
+
+    private fun searchLocation(){
+        var location: String = binding.headerPageLN.edtSearchCity.text.toString()
+        var addressList: List<Address>? = null
+
+        if (location == null || location == "") {
+            Toast.makeText(applicationContext,"provide location",Toast.LENGTH_SHORT).show()
+        }
+        else{
+            val geoCoder = Geocoder(this)
+            try {
+                addressList = geoCoder.getFromLocationName(location, 1)
+
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+            val address = addressList!![0]
+            val latLng = LatLng(address.latitude, address.longitude)
+            map!!.addMarker(MarkerOptions().position(latLng).title(location))
+            map!!.animateCamera(CameraUpdateFactory.newLatLng(latLng))
+            Toast.makeText(applicationContext, address.latitude.toString() + " " + address.longitude, Toast.LENGTH_LONG).show()
+        }
     }
 
 }
