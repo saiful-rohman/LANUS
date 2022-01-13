@@ -485,6 +485,8 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
             polyLines.get(i).remove()
         }
         latLongs = ArrayList<LatLng>()
+        distMileage = 0.0
+        lateLatlong = defaultLocation
     }
 
     private fun hideExceptRoute(){
@@ -551,15 +553,28 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
         val kmInDec: Int = Integer.valueOf(newFormat.format(km))
         val meter = valueResult % 1000
         val meterInDec: Int = Integer.valueOf(newFormat.format(meter))
-//        Log.i(
-//            "Radius Value", "" + valueResult + "   KM  " + kmInDec
-//                    + " Meter   " + meterInDec
-//        )
-        binding.incldLayerRoute2.txvMIleage.text = "${valueResult} KM"
-        distMileage = valueResult
+
+        distMileage = distMileage + km
+        val timeTravel : Double = distMileage * 4 //4 km/hour
+        val fuelUsed :  Double = distMileage / 8 //8 km/liter
+        binding.incldLayerRoute2.txvMIleage.text = "${String.format("%.2f",distMileage)} KM"
+        binding.incldLayerRoute2.txvTravelingTime.text = "${convertHour(timeTravel)} Minute"
+        binding.incldLayerRoute2.txvUsedBBM.text = "${String.format("%.2f",fuelUsed)} Liter"
         lateLatlong = EndP
 
         return Radius * c
+    }
+
+    private fun convertHour(value : Double) : String{
+        var result = ""
+        val roundVal = Math.round(value)
+
+        val timeTravelHour: Long = roundVal / 60
+        val timeTravelMinute: Long = roundVal % 60
+        result = "${if(timeTravelHour < 10) "0${timeTravelHour}" else "${timeTravelHour}"}:" +
+                "${if(timeTravelMinute < 10) "0${timeTravelMinute}" else "${timeTravelMinute}"}"
+
+        return result
     }
 
 }
