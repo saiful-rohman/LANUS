@@ -55,6 +55,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
 import javax.inject.Inject
 import android.widget.TextView.OnEditorActionListener
+import java.text.DecimalFormat
 
 @AndroidEntryPoint
 class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
@@ -92,6 +93,8 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
     private var markerList : ArrayList<Marker> = ArrayList<Marker>()
     private var latLongs :  ArrayList<LatLng> = ArrayList<LatLng>()
     private var polyLines :  ArrayList<Polyline> = ArrayList<Polyline>()
+    private var distMileage : Double = 0.0
+    private lateinit var lateLatlong : LatLng
 
     @Inject
     lateinit var prefHelp: PrefHelper
@@ -298,6 +301,10 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
         this.map!!.uiSettings.isMyLocationButtonEnabled = false
         this.map!!.isMyLocationEnabled = false
 
+        getLocationPermission()
+        updateLocationUI()
+        getDeviceLocation()
+
         this.map!!.setOnMapClickListener(GoogleMap.OnMapClickListener { latLong ->
             if(isRoute){
                 var mark = this.map!!.addMarker(MarkerOptions().position(latLong))
@@ -308,15 +315,16 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
                     .color(getColor(R.color.red))
                     .width(15f)
                     .addAll(latLongs))
-
                 polyLines.add(lineOption)
+
+                if(latLongs.size > 1){
+                    CalculationByDistance(lateLatlong,latLong)
+                } else{
+                    lateLatlong = latLong
+                }
 
             }
         })
-
-        getLocationPermission()
-        updateLocationUI()
-        getDeviceLocation()
     }
 
     @SuppressLint("MissingPermission")
@@ -464,6 +472,14 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
         removePolyline()
     }
 
+    private fun refreshRoutePage(){
+        binding.incldLayerRoute2.txvMIleage.text = "0.0 KM"
+        binding.incldLayerRoute2.txvTravelingTime.text = ""
+        binding.incldLayerRoute2.txvFuel.text = "0.0 LITER"
+        binding.incldLayerRoute2.txvBearing.text = "0"
+        binding.incldLayerRoute2.txvHeading.text = "0"
+    }
+
     private fun removePolyline(){
         for (i in polyLines.indices){
             polyLines.get(i).remove()
@@ -490,6 +506,7 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
         binding.incldLayerRoute2.lnrRouteContent.visibility = View.GONE
         isRoute = false
         removeAllMarker()
+        refreshRoutePage()
     }
 
     private fun searchLocation(){
@@ -513,6 +530,36 @@ class LN_LBCYBAActivity : AppCompatActivity() , OnMapReadyCallback {
             map!!.animateCamera(CameraUpdateFactory.newLatLng(latLng))
 //            Toast.makeText(applicationContext, address.latitude.toString() + " " + address.longitude, Toast.LENGTH_LONG).show()
         }
+    }
+
+    fun CalculationByDistance(StartP: LatLng, EndP: LatLng): Double {
+        val Radius = 6371 // radius of earth in Km
+        val lat1 = StartP.latitude
+        val lat2 = EndP.latitude
+        val lon1 = StartP.longitude
+        val lon2 = EndP.longitude
+        val dLat = Math.toRadians(lat2 - lat1)
+        val dLon = Math.toRadians(lon2 - lon1)
+        val a = (Math.sin(dLat / 2) * Math.sin(dLat / 2)
+                + (Math.cos(Math.toRadians(lat1))
+                * Math.cos(Math.toRadians(lat2)) * Math.sin(dLon / 2)
+                * Math.sin(dLon / 2)))
+        val c = 2 * Math.asin(Math.sqrt(a))
+        val valueResult = Radius * c
+        val km = valueResult / 1
+        val newFormat = DecimalFormat("#,##")
+        val kmInDec: Int = Integer.valueOf(newFormat.format(km))
+        val meter = valueResult % 1000
+        val meterInDec: Int = Integer.valueOf(newFormat.format(meter))
+//        Log.i(
+//            "Radius Value", "" + valueResult + "   KM  " + kmInDec
+//                    + " Meter   " + meterInDec
+//        )
+        binding.incldLayerRoute2.txvMIleage.text = "${valueResult} KM"
+        distMileage = valueResult
+        lateLatlong = EndP
+
+        return Radius * c
     }
 
 }
